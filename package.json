@@ -1,11 +1,13 @@
 {
   "name": "servicehub",
   "version": "1.0.0",
+  "description": "ServiceHub AI backend",
   "main": "server.js",
-  "type": "module",
   "scripts": {
     "start": "node server.js"
   },
+  "author": "ServiceHub",
+  "license": "ISC",
   "dependencies": {
     "cors": "^2.8.6",
     "express": "^4.22.1"
