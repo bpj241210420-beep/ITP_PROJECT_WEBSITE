@@ -17,7 +17,7 @@ const OLLAMA_MODEL = process.env.OLLAMA_MODEL || "phi3:mini";
 // Frontend folder
 const STATIC_DIR = process.env.STATIC_DIR || "ServiceHub";
 
-// ✅ Assets folder at repo root (IMPORTANT)
+// Assets folder at repo root
 const ASSETS_DIR = process.env.ASSETS_DIR || "assets";
 
 // Optional allowlist
@@ -95,7 +95,7 @@ function rateLimit(req, res, next) {
 // Serve ServiceHub folder at root URL
 app.use(express.static(path.join(__dirname, STATIC_DIR)));
 
-// ✅ Serve /assets from repo root
+// Serve /assets from repo root
 app.use("/assets", express.static(path.join(__dirname, ASSETS_DIR)));
 
 // Default landing
@@ -184,6 +184,7 @@ function buildSystemPrompt(lang) {
 
 async function ollamaChat({ model, system, user }) {
   const fetch = await getFetch();
+
   const body = {
     model,
     messages: [
