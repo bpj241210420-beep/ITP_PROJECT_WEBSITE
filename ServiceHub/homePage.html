@@ -61,11 +61,9 @@
   </header>
 
   <main class="home-hero">
-    <!-- ✅ Background container -->
+    <!-- Background container -->
     <div class="home-hero-bg">
-      <!-- ✅ slideshow image layer (JS will change background-image here) -->
       <div class="home-hero-photo" id="heroBgPhoto" aria-hidden="true"></div>
-      <!-- ✅ tint overlay so text readable -->
       <div class="home-hero-tint" aria-hidden="true"></div>
     </div>
 
@@ -112,8 +110,23 @@
         </div>
       </div>
 
-      <!-- ✅ Removed preview image box completely -->
-      <!-- <div class="hero-right reveal" data-delay="1"> ... </div> -->
+      <!-- ✅ PREVIEW BOX (students slideshow) -->
+      <div class="hero-right reveal" data-delay="1">
+        <div class="preview-card">
+          <div class="preview-img">
+            <img id="heroSlide" src="" alt="Preview">
+          </div>
+
+          <div class="preview-content">
+            <h3>Preview</h3>
+            <p data-i18n
+               data-en="Smooth browsing experience — designed for students & local communities."
+               data-bm="Pengalaman browsing lancar — direka untuk pelajar & komuniti setempat.">
+              Smooth browsing experience — designed for students & local communities.
+            </p>
+          </div>
+        </div>
+      </div>
 
     </div>
   </main>
