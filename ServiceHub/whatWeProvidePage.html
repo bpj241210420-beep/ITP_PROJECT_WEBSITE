@@ -251,17 +251,15 @@
     </div>
   </footer>
 
+  <!-- ✅ FIXED: always load from /assets (server.js serves /assets from repo root) -->
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
 
     (function () {
-      const p = String(location.pathname || "").replaceAll("\\", "/");
-      const base = p.includes("/ServiceHub/") ? "../assets/" : "assets/";
-
-      document.querySelectorAll("img[data-asset]").forEach(img => {
+      document.querySelectorAll("img[data-asset]").forEach((img) => {
         const file = img.getAttribute("data-asset") || "";
         if (!file) return;
-        img.src = encodeURI(base + file);
+        img.src = encodeURI("/assets/" + file);
       });
     })();
   </script>
