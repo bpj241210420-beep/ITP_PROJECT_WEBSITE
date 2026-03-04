@@ -1,141 +1,85 @@
-// homePagemain.js
-(function () {
+(function(){
 
-  // enable reveal animations
-  document.documentElement.classList.add("reveal-on");
+document.documentElement.classList.add("reveal-on");
 
-  // detect correct assets path (local vs hosted)
-  function ASSET_BASE() {
-    const p = String(location.pathname || "").replaceAll("\\", "/");
-    return p.includes("/ServiceHub/") ? "../assets/" : "assets/";
-  }
+function ASSET_BASE(){
+const p = location.pathname.replaceAll("\\","/");
+return p.includes("/ServiceHub/") ? "../assets/" : "assets/";
+}
 
-  function asset(file) {
-    return encodeURI(ASSET_BASE() + file);
-  }
+function asset(f){
+return encodeURI(ASSET_BASE()+f);
+}
 
-  // ============================
-  // HOMEPAGE BACKGROUND SLIDESHOW
-  // ============================
-  const bg = document.getElementById("heroBgPhoto");
+const bg = document.getElementById("heroBgPhoto");
 
-  if (bg) {
+if(bg){
 
-    const slides = [
-      asset("servicehubone.jpg"),
-      asset("servicehubtwo.jpg"),
-      asset("servicehubthree.avif")
-    ];
+const slides=[
+asset("servicehubone.jpg"),
+asset("servicehubtwo.jpg"),
+asset("servicehubthree.avif")
+];
 
-    slides.forEach(src => {
-      const img = new Image();
-      img.src = src;
-    });
+slides.forEach(s=>{
+const img=new Image();
+img.src=s;
+});
 
-    let index = 0;
-    const INTERVAL = 5200;
-    const FADE = 420;
+let i=0;
 
-    function setBg(url) {
-      bg.style.backgroundImage = `url("${url}")`;
-    }
+function setBg(u){
+bg.style.backgroundImage=`url("${u}")`;
+}
 
-    function show(i) {
-      bg.classList.add("is-fading");
+function show(x){
 
-      setTimeout(() => {
-        setBg(slides[i]);
-        requestAnimationFrame(() => {
-          bg.classList.remove("is-fading");
-        });
-      }, FADE);
-    }
+bg.classList.add("is-fading");
 
-    setBg(slides[0]);
+setTimeout(()=>{
+setBg(slides[x]);
+requestAnimationFrame(()=>{
+bg.classList.remove("is-fading");
+});
+},420);
 
-    let timer = setInterval(() => {
-      index = (index + 1) % slides.length;
-      show(index);
-    }, INTERVAL);
+}
 
-    document.addEventListener("visibilitychange", () => {
+setBg(slides[0]);
 
-      if (document.hidden) {
-        clearInterval(timer);
-        timer = null;
-      }
+setInterval(()=>{
+i=(i+1)%slides.length;
+show(i);
+},5200);
 
-      else {
-        if (!timer) {
-          timer = setInterval(() => {
-            index = (index + 1) % slides.length;
-            show(index);
-          }, INTERVAL);
-        }
-      }
+}
 
-    });
+const els=document.querySelectorAll(".reveal");
 
-  }
+if(els.length && "IntersectionObserver" in window){
 
-  // ============================
-  // PREVIEW SLIDESHOW (STUDENTS)
-  // ============================
-  const previewImg = document.getElementById("heroSlide");
+const io=new IntersectionObserver((entries)=>{
 
-  if (previewImg) {
+entries.forEach(e=>{
 
-    const previewSlides = [
-      asset("previewone.jpg"),
-      asset("previewtwo.webp"),
-      asset("previewthree.jpg")
-    ];
+if(e.isIntersecting){
+e.target.classList.add("is-visible");
+io.unobserve(e.target);
+}
 
-    previewSlides.forEach(src => {
-      const img = new Image();
-      img.src = src;
-    });
+});
 
-    let i = 0;
+},{threshold:0.12});
 
-    previewImg.src = previewSlides[0];
+els.forEach(el=>io.observe(el));
 
-    setInterval(() => {
-      i = (i + 1) % previewSlides.length;
-      previewImg.src = previewSlides[i];
-    }, 3500);
+}
 
-  }
+else{
 
-  // ============================
-  // REVEAL ANIMATION
-  // ============================
-  const els = document.querySelectorAll(".reveal");
+document.querySelectorAll(".reveal")
+.forEach(el=>el.classList.add("is-visible"));
 
-  if (els.length && "IntersectionObserver" in window) {
-
-    const io = new IntersectionObserver((entries) => {
-
-      entries.forEach((e) => {
-
-        if (e.isIntersecting) {
-          e.target.classList.add("is-visible");
-          io.unobserve(e.target);
-        }
-
-      });
-
-    }, { threshold: 0.12 });
-
-    els.forEach(el => io.observe(el));
-
-  }
-
-  else {
-
-    document.querySelectorAll(".reveal")
-      .forEach(el => el.classList.add("is-visible"));
-
-  }
+}
 
 })();
