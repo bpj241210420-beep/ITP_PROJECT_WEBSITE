@@ -33,7 +33,9 @@
     return localStorage.getItem(LANG_KEY) || root.getAttribute("data-lang") || "en";
   }
 
-  window.SH_LANG = function(){ return getLang(); };
+  window.SH_LANG = function () {
+    return getLang();
+  };
 
   window.SH_T = function (obj) {
     const lang = getLang();
@@ -94,12 +96,6 @@
     sel.innerHTML = cats.map((c) => `<option value="${c}">${c}</option>`).join("");
   }
 
-  // ✅ helper: base folder URL (supaya kekal dalam /ServiceHub/)
-  function getBaseFolderUrl() {
-    const href = location.href;
-    return href.substring(0, href.lastIndexOf("/") + 1);
-  }
-
   // ===== GLOBAL SEARCH SUBMIT =====
   function initGlobalSearch() {
     const form = document.querySelector("[data-search-form]");
@@ -112,7 +108,8 @@
       const q = (qInput?.value || "").trim();
       const cat = (document.getElementById("globalCat")?.value || "").trim();
 
-      const url = new URL("servicesPage.html", getBaseFolderUrl());
+      const url = new URL("servicesPage.html", location.href);
+      url.search = ""; // reset
       if (q) url.searchParams.set("q", q);
       if (cat && cat !== "All categories") url.searchParams.set("cat", cat);
 
@@ -124,37 +121,45 @@
   // ===== GLOBAL SCROLL REVEAL =====
   let revealIO = null;
 
+  function revealAllNow() {
+    document.querySelectorAll(".reveal").forEach((el) => el.classList.add("is-visible"));
+  }
+
   function initReveal() {
-    const reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const hasIO = typeof IntersectionObserver !== "undefined";
-
-    // If reduce motion OR no IO → do nothing (fail-safe: content stays visible)
-    if (reduceMotion || !hasIO) return;
-
-    // Enable reveal CSS rules (your common.css uses html.reveal-on .reveal ...)
+    // ✅ ALWAYS enable reveal mode (so animation CSS active)
     root.classList.add("reveal-on");
 
     const items = Array.from(document.querySelectorAll(".reveal"));
     if (!items.length) return;
 
+    const hasIO = typeof IntersectionObserver !== "undefined";
+
+    // If no IO, just show them
+    if (!hasIO) {
+      revealAllNow();
+      return;
+    }
+
     // cleanup old observer if rerun
     if (revealIO) revealIO.disconnect();
 
-    revealIO = new IntersectionObserver((entries) => {
-      entries.forEach((e) => {
-        if (e.isIntersecting) {
-          e.target.classList.add("is-visible");
-          revealIO.unobserve(e.target);
-        }
-      });
-    }, { threshold: 0.12 });
+    revealIO = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            e.target.classList.add("is-visible");
+            revealIO.unobserve(e.target);
+          }
+        });
+      },
+      { threshold: 0.12 }
+    );
 
     items.forEach((el) => {
-      // if already visible, skip observing
       if (!el.classList.contains("is-visible")) revealIO.observe(el);
     });
 
-    // paint pass: make above-fold stuff visible faster
+    // Make above-fold visible quickly
     requestAnimationFrame(() => {
       items.forEach((el) => {
         const r = el.getBoundingClientRect();
@@ -171,13 +176,14 @@
   initGlobalSearch();
   initReveal();
 
-  // rerun reveal on language change (in case new nodes/sections appear)
+  // rerun reveal when language changes (in case text changes height etc.)
   window.addEventListener("servicehub:langchange", () => {
     initReveal();
   });
 
   // back/forward cache support
   window.addEventListener("pageshow", () => {
+    initNavActive();
     initReveal();
   });
 })();

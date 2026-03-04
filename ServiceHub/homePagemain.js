@@ -1,63 +1,84 @@
 // homePagemain.js
 (function () {
+  // Ensure reveal system ON (CSS uses html.reveal-on ...)
   document.documentElement.classList.add("reveal-on");
 
-  function ASSET_BASE(){
-    const p = String(location.pathname || "").replaceAll("\\", "/");
-    return p.includes("/ServiceHub/") ? "../assets/" : "assets/";
-  }
-  function asset(file){
-    return encodeURI(ASSET_BASE() + file);
+  // Always use /assets (server.js serves it in live)
+  function asset(file) {
+    return encodeURI(`/assets/${file}`);
   }
 
-  // ✅ Background slideshow (replaces #heroSlide img)
+  // Background slideshow on #heroBgPhoto
   const bg = document.getElementById("heroBgPhoto");
   if (bg) {
-    const slides = [
+    const candidates = [
+      asset("previewone.jpg"),
+      asset("previewthree.jpg"),
+      asset("servicehubthree.avif"), // keep if exists
       asset("servicehubone.jpg"),
       asset("servicehubtwo.jpg"),
-      asset("servicehubthree.avif")
     ];
 
-    // preload
-    slides.forEach((src) => { const i = new Image(); i.src = src; });
+    // keep only images that really load
+    const slides = [];
+    let loaded = 0;
 
-    let idx = 0;
-
-    function setBg(url){
-      bg.style.backgroundImage = `url("${url}")`;
+    function tryLoad(src) {
+      return new Promise((resolve) => {
+        const img = new Image();
+        img.onload = () => resolve({ ok: true, src });
+        img.onerror = () => resolve({ ok: false, src });
+        img.src = src;
+      });
     }
 
-    function show(i) {
-      bg.classList.add("is-fading");
-      setTimeout(() => {
-        setBg(slides[i]);
-        // fade back in
-        requestAnimationFrame(() => bg.classList.remove("is-fading"));
-      }, 420);
-    }
+    (async () => {
+      const results = await Promise.all(candidates.map(tryLoad));
+      results.forEach((r) => {
+        if (r.ok) slides.push(r.src);
+      });
 
-    function next() {
-      idx = (idx + 1) % slides.length;
-      show(idx);
-    }
+      // fallback if nothing loaded
+      if (!slides.length) return;
 
-    // start
-    setBg(slides[0]);
+      let idx = 0;
+      const FADE_MS = 420;
+      const INTERVAL_MS = 5200;
 
-    let timer = setInterval(next, 5200);
-
-    document.addEventListener("visibilitychange", () => {
-      if (document.hidden) {
-        clearInterval(timer);
-        timer = null;
-      } else {
-        if (!timer) timer = setInterval(next, 5200);
+      function setBg(url) {
+        bg.style.backgroundImage = `url("${url}")`;
       }
-    });
+
+      function show(i) {
+        bg.classList.add("is-fading");
+        setTimeout(() => {
+          setBg(slides[i]);
+          requestAnimationFrame(() => bg.classList.remove("is-fading"));
+        }, FADE_MS);
+      }
+
+      function next() {
+        idx = (idx + 1) % slides.length;
+        show(idx);
+      }
+
+      // start
+      setBg(slides[0]);
+
+      let timer = setInterval(next, INTERVAL_MS);
+
+      document.addEventListener("visibilitychange", () => {
+        if (document.hidden) {
+          clearInterval(timer);
+          timer = null;
+        } else {
+          if (!timer) timer = setInterval(next, INTERVAL_MS);
+        }
+      });
+    })();
   }
 
-  // reveal animations (unchanged)
+  // Local reveal for this page (safe even if common.js already did it)
   const els = document.querySelectorAll(".reveal");
   if (els.length && "IntersectionObserver" in window) {
     const io = new IntersectionObserver(
@@ -73,6 +94,6 @@
     );
     els.forEach((el) => io.observe(el));
   } else {
-    document.querySelectorAll(".reveal").forEach(el => el.classList.add("is-visible"));
+    document.querySelectorAll(".reveal").forEach((el) => el.classList.add("is-visible"));
   }
 })();

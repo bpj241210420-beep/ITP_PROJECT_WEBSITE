@@ -1,5 +1,6 @@
 // server.js
 // ServiceHub AI backend (Ollama) + Static Hosting
+
 const express = require("express");
 const cors = require("cors");
 const path = require("path");
@@ -13,8 +14,11 @@ const PORT = process.env.PORT ? Number(process.env.PORT) : 3000;
 const OLLAMA_BASE = process.env.OLLAMA_BASE || "http://127.0.0.1:11434";
 const OLLAMA_MODEL = process.env.OLLAMA_MODEL || "phi3:mini";
 
-// ✅ Your frontend folder is ServiceHub (NOT public)
+// Frontend folder
 const STATIC_DIR = process.env.STATIC_DIR || "ServiceHub";
+
+// ✅ Assets folder at repo root (IMPORTANT)
+const ASSETS_DIR = process.env.ASSETS_DIR || "assets";
 
 // Optional allowlist
 const ALLOWED_ORIGINS = (process.env.ALLOWED_ORIGINS || "")
@@ -57,7 +61,7 @@ app.use(
 
 app.use(express.json({ limit: "1mb" }));
 
-// ---------- RATE LIMIT (simple) ----------
+// ---------- RATE LIMIT ----------
 const RATE_WINDOW_MS = Number(process.env.RATE_WINDOW_MS || 15000);
 const RATE_MAX = Number(process.env.RATE_MAX || 30);
 const _rate = new Map();
@@ -88,8 +92,13 @@ function rateLimit(req, res, next) {
 }
 
 // ---------- STATIC FRONTEND ----------
+// Serve ServiceHub folder at root URL
 app.use(express.static(path.join(__dirname, STATIC_DIR)));
 
+// ✅ Serve /assets from repo root
+app.use("/assets", express.static(path.join(__dirname, ASSETS_DIR)));
+
+// Default landing
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, STATIC_DIR, "homePage.html"));
 });
@@ -124,7 +133,10 @@ function buildDirectorySummary(local) {
   for (let i = 0; i < Math.min(matches.length, 5); i++) {
     const s = matches[i] || {};
     lines.push(
-      `${i + 1}. ${safeStr(s.name, 140)} | ${safeStr(s.category, 60)} | ${safeStr(s.area, 40)} | price=${safeStr(s.price, 40)}`
+      `${i + 1}. ${safeStr(s.name, 140)} | ${safeStr(s.category, 60)} | ${safeStr(
+        s.area,
+        40
+      )} | price=${safeStr(s.price, 40)}`
     );
   }
   return lines.join("\n");
@@ -135,7 +147,8 @@ function followupQuestion(lang, detected) {
   const hasArea = Boolean(detected?.area);
 
   if (lang === "bm") {
-    if (sort === "cheapest") return "Nak saya susun ikut paling murah saja, atau tambah pilihan lain juga?";
+    if (sort === "cheapest")
+      return "Nak saya susun ikut paling murah saja, atau tambah pilihan lain juga?";
     if (sort === "best") return "Nak saya fokus yang paling tinggi ulasan, atau yang paling dekat?";
     if (!hasArea) return "Kawasan mana ya—Batu Pahat, Parit Raja, atau Sri Gading?";
     return "Nak yang murah, yang paling dekat, atau yang paling terbaik ulasan?";
@@ -221,7 +234,13 @@ app.get("/api/health", async (req, res) => {
     const r = await fetch(`${OLLAMA_BASE}/api/tags`);
     res.json({ ok: true, ollama: r.ok, model: OLLAMA_MODEL, ollama_base: OLLAMA_BASE });
   } catch (e) {
-    res.json({ ok: true, ollama: false, model: OLLAMA_MODEL, ollama_base: OLLAMA_BASE, error: String(e?.message || e) });
+    res.json({
+      ok: true,
+      ollama: false,
+      model: OLLAMA_MODEL,
+      ollama_base: OLLAMA_BASE,
+      error: String(e?.message || e),
+    });
   }
 });
 
@@ -274,5 +293,6 @@ app.post("/api/chat", rateLimit, async (req, res) => {
 app.listen(PORT, () => {
   console.log(`✅ Server running on http://localhost:${PORT}`);
   console.log(`✅ Serving static from ./${STATIC_DIR}`);
+  console.log(`✅ Serving assets from ./${ASSETS_DIR} at /assets`);
   console.log(`✅ Using Ollama at ${OLLAMA_BASE} (model: ${OLLAMA_MODEL})`);
 });
