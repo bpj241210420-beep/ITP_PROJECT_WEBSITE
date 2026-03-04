@@ -1,0 +1,640 @@
+/* chatWidget.css */
+
+/* ===== Floating Button (Icon Only, Lavender, Round Dialogue) ===== */
+.chat-fab{
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  z-index: 9999;
+
+  width: 60px;
+  height: 60px;
+
+  border: 1px solid rgba(122,92,255,.28);
+  background: linear-gradient(135deg, var(--lav), var(--lav2));
+  color: #fff;
+
+  border-radius: 20px; /* macam bubble */
+  box-shadow: 0 16px 40px rgba(122,92,255,.28);
+
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+
+  transition: transform .15s ease, filter .15s ease, box-shadow .15s ease;
+}
+
+.chat-fab:hover{
+  transform: translateY(-2px);
+  filter: brightness(1.02);
+  box-shadow: 0 18px 48px rgba(122,92,255,.32);
+}
+
+.chat-fab:active{
+  transform: translateY(0px) scale(.98);
+}
+
+/* small “tail” effect macam chat bubble */
+.chat-fab::after{
+  content:"";
+  position:absolute;
+  right: 10px;
+  bottom: -7px;
+  width: 14px;
+  height: 14px;
+  background: linear-gradient(135deg, var(--lav), var(--lav2));
+  transform: rotate(45deg);
+  border-bottom-right-radius: 4px;
+  filter: drop-shadow(0 10px 16px rgba(122,92,255,.18));
+}
+
+/* icon size */
+.chat-fab .chat-ic{
+  font-size: 22px;
+  line-height: 1;
+}
+
+/* dark mode hover */
+[data-theme="dark"] .chat-fab{
+  box-shadow: 0 18px 52px rgba(0,0,0,.35);
+}
+
+/* ===== Chat Panel (IMPORTANT: NO display:none) ===== */
+.chat-panel{
+  position: fixed;
+  right: 18px;
+  bottom: 92px;
+  width: min(392px, calc(100vw - 36px));
+  height: 540px;
+  z-index: 9999;
+
+  border-radius: 20px;
+  border: 1px solid var(--line);
+  background: rgba(255,255,255,.78);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+
+  display: flex;             /* ALWAYS flex */
+  flex-direction: column;
+
+  backdrop-filter: var(--glass);
+  transform-origin: bottom right;
+
+  /* hidden state */
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(10px) scale(.98);
+
+  transition: opacity .18s ease, transform .18s ease;
+}
+
+[data-theme="dark"] .chat-panel{
+  background: rgba(20,18,32,.62);
+}
+
+/* open state */
+.chat-panel.open{
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0) scale(1);
+}
+
+/* ===== Header ===== */
+.chat-head{
+  padding: 12px 12px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  border-bottom: 1px solid var(--line);
+  background: rgba(255,255,255,.45);
+  backdrop-filter: var(--glass);
+}
+
+[data-theme="dark"] .chat-head{
+  background: rgba(20,18,32,.35);
+}
+
+.chat-title{
+  font-weight: 1000;
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+
+.chat-title .dot{
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: rgba(122,92,255,.9);
+  box-shadow: 0 0 0 3px rgba(122,92,255,.18);
+}
+
+.chat-close{
+  border: 1px solid var(--line);
+  background: rgba(255,255,255,.35);
+  color: var(--text);
+  border-radius: 12px;
+  padding: 6px 10px;
+  cursor:pointer;
+  font-weight: 900;
+}
+
+[data-theme="dark"] .chat-close{
+  background: rgba(255,255,255,.06);
+}
+
+/* ===== Body ===== */
+.chat-body{
+  padding: 12px;
+  flex: 1;
+  overflow: auto;
+  display:flex;
+  flex-direction:column;
+  gap: 10px;
+}
+
+/* messages */
+.msg{
+  max-width: 85%;
+  border-radius: 16px;
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  line-height: 1.45;
+  white-space: pre-wrap;
+}
+
+.msg.user{
+  margin-left: auto;
+  background: rgba(122,92,255,.14);
+}
+
+.msg.ai{
+  margin-right: auto;
+  background: rgba(255,255,255,.55);
+}
+
+[data-theme="dark"] .msg.ai{
+  background: rgba(20,18,32,.35);
+}
+
+/* ===== Footer ===== */
+.chat-foot{
+  padding: 12px;
+  border-top: 1px solid var(--line);
+  display:flex;
+  gap: 10px;
+  background: rgba(255,255,255,.45);
+  backdrop-filter: var(--glass);
+}
+
+[data-theme="dark"] .chat-foot{
+  background: rgba(20,18,32,.35);
+}
+
+.chat-input{
+  flex: 1;
+  border-radius: 14px;
+  border: 1px solid var(--line);
+  background: rgba(255,255,255,.60);
+  padding: 12px;
+  outline: none;
+  color: var(--text);
+}
+
+[data-theme="dark"] .chat-input{
+  background: rgba(20,18,32,.45);
+}
+
+.chat-send{
+  border-radius: 14px;
+  padding: 12px 14px;
+  font-weight: 1000;
+  border: 0;
+  background: linear-gradient(135deg, var(--lav), var(--lav2));
+  color: #fff;
+  cursor:pointer;
+}
+
+.chat-send:disabled{ opacity:.65; cursor:not-allowed; }
+
+/* ===== AI Reply Cards / Actions (Compact & Nice) ===== */
+.msg.ai{
+  max-width: 92%;
+}
+
+/* card container */
+.msg.ai .ai-card{
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 12px 12px 10px;
+  background: rgba(255,255,255,.55);
+  display: grid;
+  gap: 10px;
+}
+
+[data-theme="dark"] .msg.ai .ai-card{
+  background: rgba(20,18,32,.35);
+}
+
+/* title */
+.msg.ai .ai-title{
+  font-weight: 1000;
+  font-size: 1.05rem;
+  line-height: 1.25;
+}
+
+/* address */
+.msg.ai .ai-address{
+  opacity: .88;
+  line-height: 1.35;
+  font-size: .94rem;
+}
+
+/* pills */
+.msg.ai .ai-meta{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  align-items:center;
+}
+
+.msg.ai .ai-pill{
+  display:inline-flex;
+  align-items:center;
+  padding:6px 10px;
+  border-radius:999px;
+  border:1px solid var(--line);
+  font-size:.83rem;
+  background: rgba(0,0,0,.03);
+  white-space: nowrap;
+}
+
+[data-theme="dark"] .msg.ai .ai-pill{
+  background: rgba(255,255,255,.06);
+}
+
+/* phone row */
+.msg.ai .ai-phone{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  font-weight: 1000;
+  font-size: .96rem;
+}
+
+/* actions grid */
+.msg.ai .ai-actions{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap:10px;
+  margin-top: 2px;
+}
+
+.msg.ai .ai-actions a{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  padding:10px 12px;
+  border-radius: 14px;
+  border:1px solid var(--line);
+  text-decoration:none;
+  font-weight: 1000;
+  font-size: .93rem;
+  color: var(--text);
+  background: rgba(255,255,255,.35);
+  user-select:none;
+  white-space: nowrap;
+}
+
+[data-theme="dark"] .msg.ai .ai-actions a{
+  background: rgba(255,255,255,.06);
+}
+
+/* primary button */
+.msg.ai .ai-actions a.primary{
+  border: 1px solid rgba(122,92,255,.28);
+  background: linear-gradient(135deg, var(--lav), var(--lav2));
+  color:#fff;
+}
+
+/* full width last button (optional) */
+.msg.ai .ai-actions a.full{
+  grid-column: 1 / -1;
+}
+
+/* hover */
+.msg.ai .ai-actions a:hover{
+  filter: brightness(1.03);
+  transform: translateY(-1px);
+}
+.msg.ai .ai-actions a:active{
+  transform: translateY(0px) scale(.99);
+}
+
+/* ===== AI Cards inside chat ===== */
+.msg.ai { padding: 10px 12px; }
+.msg.ai .ai-wrap { display:flex; flex-direction:column; gap:10px; }
+
+/* card container */
+.ai-card{
+  border: 1px solid rgba(0,0,0,.08);
+  background: rgba(255,255,255,.72);
+  border-radius: 18px;
+  padding: 12px;
+  box-shadow: 0 10px 26px rgba(0,0,0,.06);
+}
+
+[data-theme="dark"] .ai-card{
+  background: rgba(20,18,32,.38);
+  border-color: rgba(255,255,255,.08);
+}
+
+/* header row */
+.ai-card-top{
+  display:flex;
+  gap:12px;
+  align-items:stretch;
+}
+
+.ai-card-img{
+  width: 84px;
+  min-width: 84px;
+  height: 84px;
+  border-radius: 14px;
+  object-fit: cover;
+  border: 1px solid rgba(0,0,0,.08);
+  background: rgba(255,255,255,.35);
+}
+
+[data-theme="dark"] .ai-card-img{
+  border-color: rgba(255,255,255,.08);
+}
+
+.ai-card-main{ flex:1; min-width:0; }
+
+.ai-card-title{
+  font-weight: 950;
+  font-size: 15px;
+  margin: 0 0 4px 0;
+  color: var(--text);
+}
+
+.ai-card-sub{
+  font-size: 12px;
+  opacity: .78;
+  margin: 0 0 6px 0;
+  color: var(--text);
+}
+
+.ai-pill-row{ display:flex; gap:8px; flex-wrap:wrap; }
+.ai-pill{
+  font-size: 12px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(122,92,255,.22);
+  background: rgba(122,92,255,.10);
+  color: var(--text);
+  font-weight: 800;
+}
+
+/* address */
+.ai-card-addr{
+  margin-top: 8px;
+  font-size: 12.5px;
+  line-height: 1.35;
+  color: var(--text);
+  opacity: .9;
+}
+
+/* footer actions */
+.ai-actions{
+  margin-top: 10px;
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.ai-btn{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  padding: 10px 12px;
+  border-radius: 14px;
+  border: 1px solid rgba(0,0,0,.10);
+  background: rgba(255,255,255,.55);
+  color: var(--text);
+  font-weight: 950;
+  text-decoration:none;
+  cursor:pointer;
+  user-select:none;
+  transition: transform .12s ease, filter .12s ease;
+}
+
+.ai-btn:hover{ transform: translateY(-1px); filter: brightness(1.03); }
+.ai-btn:active{ transform: translateY(0px) scale(.99); }
+
+[data-theme="dark"] .ai-btn{
+  background: rgba(255,255,255,.06);
+  border-color: rgba(255,255,255,.10);
+}
+
+.ai-btn.primary{
+  border: 0;
+  background: linear-gradient(135deg, var(--lav), var(--lav2));
+  color: #fff;
+}
+
+.ai-btn.small{
+  grid-column: span 2;
+  opacity: .92;
+}
+
+/* phone row */
+.ai-phone{
+  margin-top: 8px;
+  display:flex;
+  gap:10px;
+  align-items:center;
+  font-weight: 900;
+  color: var(--text);
+  font-size: 13px;
+}
+.ai-phone .ic{ opacity:.85; }
+
+/* compact paragraph reply */
+.ai-paragraph{
+  font-size: 13px;
+  line-height: 1.45;
+  color: var(--text);
+  opacity: .95;
+  margin: 0;
+}
+
+/* ===== ServiceHub AI Cards fix ===== */
+
+/* 1) bila bubble ada cards, bagi dia full width */
+.msg.ai:has(.ai-wrap){
+  max-width: 100% !important;
+  padding: 8px !important;
+  background: transparent !important;
+  border: 0 !important;
+}
+
+/* fallback kalau browser tak support :has() */
+.msg.ai .ai-wrap{
+  width: 100%;
+}
+
+/* 2) jangan ikut pre-wrap untuk HTML cards */
+.msg.ai .ai-wrap,
+.msg.ai .ai-wrap *{
+  white-space: normal;
+}
+
+/* 3) cards container */
+.ai-wrap{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+
+/* 4) heading */
+.ai-heading{
+  font-weight: 950;
+  font-size: 14px;
+  margin: 2px 0 6px;
+}
+
+/* 5) card layout kemas */
+.ai-card{
+  width: 100%;
+  border-radius: 18px;
+  padding: 12px;
+  border: 1px solid rgba(0,0,0,.10);
+  background: rgba(255,255,255,.72);
+  box-shadow: 0 10px 22px rgba(0,0,0,.06);
+}
+
+[data-theme="dark"] .ai-card{
+  background: rgba(20,18,32,.42);
+  border-color: rgba(255,255,255,.12);
+}
+
+/* 6) top row (image + text) */
+.ai-card-top{
+  display:flex;
+  gap:12px;
+  align-items:flex-start;
+}
+
+.ai-card-img{
+  width: 72px;
+  min-width: 72px;
+  height: 72px;
+  border-radius: 16px;
+  object-fit: cover;
+  background: rgba(122,92,255,.12);
+  border: 1px solid rgba(0,0,0,.08);
+}
+
+[data-theme="dark"] .ai-card-img{
+  border-color: rgba(255,255,255,.10);
+}
+
+.ai-card-main{
+  flex: 1;
+  min-width: 0;
+}
+
+.ai-card-title{
+  font-weight: 950;
+  font-size: 15px;
+  line-height: 1.2;
+  margin: 0;
+}
+
+/* 7) chips (category/area/price) buat inline cantik */
+.ai-meta{
+  display:flex;
+  gap:6px;
+  flex-wrap:wrap;
+  margin-top: 6px;
+}
+
+.ai-chip{
+  font-size: 11px;
+  font-weight: 900;
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(0,0,0,.10);
+  background: rgba(255,255,255,.55);
+}
+
+[data-theme="dark"] .ai-chip{
+  background: rgba(255,255,255,.06);
+  border-color: rgba(255,255,255,.12);
+}
+
+/* 8) address */
+.ai-card-addr{
+  margin-top: 8px;
+  font-size: 12px;
+  line-height: 1.35;
+  opacity: .9;
+}
+
+/* 9) phone */
+.ai-phone{
+  margin-top: 8px;
+  display:flex;
+  gap:8px;
+  align-items:center;
+  font-weight: 900;
+  font-size: 12.5px;
+}
+
+/* 10) actions jadi 2 col kemas */
+.ai-actions{
+  margin-top: 10px;
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.ai-btn{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  padding: 10px 12px;
+  border-radius: 14px;
+  font-weight: 950;
+  text-decoration:none;
+  border: 1px solid rgba(0,0,0,.10);
+  background: rgba(255,255,255,.55);
+  color: var(--text);
+}
+
+[data-theme="dark"] .ai-btn{
+  background: rgba(255,255,255,.06);
+  border-color: rgba(255,255,255,.12);
+}
+
+.ai-btn.primary{
+  border: 0;
+  background: linear-gradient(135deg, var(--lav), var(--lav2));
+  color: #fff;
+}
+
+.ai-btn.link{
+  grid-column: span 2;
+  background: transparent;
+  border: 1px dashed rgba(0,0,0,.18);
+  opacity: .9;
+}
+
+[data-theme="dark"] .ai-btn.link{
+  border-color: rgba(255,255,255,.18);
+}

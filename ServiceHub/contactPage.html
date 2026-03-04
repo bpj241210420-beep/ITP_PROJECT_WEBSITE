@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light" data-lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ServiceHub — Contact</title>
+
+  <link rel="stylesheet" href="common.css"/>
+  <link rel="stylesheet" href="contactstyle.css"/>
+  <link rel="stylesheet" href="chatWidget.css"/>
+
+  <script defer src="servicesData.js"></script>
+  <script defer src="common.js"></script>
+  <script defer src="chatWidget.js"></script>
+  <script defer src="contactPagemain.js"></script>
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="container">
+      <div class="topbar-inner">
+        <a class="brand" href="homePage.html">
+          <div class="brand-badge">S</div>
+          <div class="brand-name">
+            <strong>ServiceHub</strong>
+            <span data-i18n data-en="Local Services Directory" data-bm="Direktori Servis Tempatan">Local Services Directory</span>
+          </div>
+        </a>
+
+        <form class="searchbar" data-search-form>
+          <div class="search-ic">🔎</div>
+          <input
+            type="text"
+            data-i18n-placeholder
+            data-en-placeholder="Search services (e.g., laundry pickup, car booking)"
+            data-bm-placeholder="Cari servis (cth: pickup laundry, tempah kereta)"
+            placeholder="Search services (e.g., laundry pickup, car booking)"
+          />
+          <select id="globalCat"></select>
+          <button class="search-btn" type="submit" data-i18n data-en="Search" data-bm="Cari">Search</button>
+        </form>
+
+        <div class="top-actions">
+          <div class="pill-group">
+            <button class="pill" type="button" data-action="lang-en">EN</button>
+            <button class="pill" type="button" data-action="lang-bm">BM</button>
+          </div>
+          <button class="icon-btn" type="button" data-action="toggle-theme">☀️</button>
+        </div>
+      </div>
+
+      <div class="navrow">
+        <nav class="navrow-inner">
+          <a href="homePage.html" data-nav data-i18n data-en="Home" data-bm="Utama">Home</a>
+          <a href="servicesPage.html" data-nav data-i18n data-en="Services" data-bm="Servis">Services</a>
+          <a href="whatWeProvidePage.html" data-nav data-i18n data-en="What we provide" data-bm="Apa kami sediakan">What we provide</a>
+          <a href="contactPage.html" data-nav data-i18n data-en="Contact" data-bm="Hubungi">Contact</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <section class="section" style="padding-top:54px;">
+    <div class="container">
+      <div class="section-title reveal">
+        <h2 data-i18n data-en="Contact" data-bm="Hubungi">Contact</h2>
+        <p data-i18n
+           data-en="Use the official channels below for support and reporting."
+           data-bm="Guna saluran rasmi di bawah untuk bantuan dan laporan.">
+          Use the official channels below for support and reporting.
+        </p>
+      </div>
+
+      <div class="contact-grid">
+        <div class="card contact-card reveal" data-delay="1">
+          <h3 data-i18n data-en="Official contact" data-bm="Hubungan rasmi">Official contact</h3>
+          <p class="muted" data-i18n
+             data-en="For enquiries, updates, and reporting."
+             data-bm="Untuk pertanyaan, kemas kini, dan laporan.">
+            For enquiries, updates, and reporting.
+          </p>
+
+          <div class="contact-row">
+            <span class="label">Email</span>
+            <a class="value" href="mailto:admin@servicehub.local">admin@servicehub.local</a>
+          </div>
+
+          <div class="contact-row">
+            <span class="label">WhatsApp</span>
+            <span class="value" id="waNum">+60 17-758 0560</span>
+          </div>
+
+          <div class="cta-row">
+            <a class="wa-btn" href="https://wa.me/60177580560" target="_blank" rel="noopener"
+               data-i18n data-en="WhatsApp Admin" data-bm="WhatsApp Admin">WhatsApp Admin</a>
+            <button class="copy-btn" type="button" data-copy="+60 17-758 0560"
+               data-i18n data-en="Copy number" data-bm="Salin nombor">Copy number</button>
+          </div>
+
+          <div class="disclaimer">
+            <strong data-i18n data-en="Disclaimer" data-bm="Penafian">Disclaimer</strong>
+            <p data-i18n
+               data-en="ServiceHub is a directory. Please confirm pricing and availability directly with the provider."
+               data-bm="ServiceHub ialah direktori. Sila sahkan harga dan ketersediaan terus dengan penyedia servis.">
+              ServiceHub is a directory. Please confirm pricing and availability directly with the provider.
+            </p>
+          </div>
+        </div>
+
+        <div class="card form-card reveal" data-delay="2">
+          <h3 data-i18n data-en="Report / Contact form" data-bm="Borang laporan / pertanyaan">Report / Contact form</h3>
+          <p class="muted" data-i18n
+             data-en="We typically respond within 24–48 hours (working days)."
+             data-bm="Kebiasaannya kami balas dalam 24–48 jam (hari bekerja).">
+            We typically respond within 24–48 hours (working days).
+          </p>
+
+          <form id="contactForm" novalidate>
+            <input type="hidden" name="access_key" value="e0f398ac-18db-4bf1-a23c-498f9c850691">
+            <input type="hidden" name="subject" value="ServiceHub — New Contact/Report">
+            <input type="hidden" name="from_name" value="ServiceHub Website">
+
+            <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
+
+            <input type="hidden" name="page" value="contactPage.html">
+            <input type="hidden" name="user_agent" id="uaField" value="">
+            <input type="hidden" name="timestamp" id="tsField" value="">
+            <input type="hidden" name="lang" id="langField" value="">
+            <input type="hidden" name="theme" id="themeField" value="">
+
+            <input type="hidden" name="service_id" id="service_id" value="">
+            <input type="hidden" name="service_name" id="service_name" value="">
+            <input type="hidden" name="service_url" id="service_url" value="">
+
+            <div class="field reveal" data-delay="1">
+              <label data-i18n data-en="Your name" data-bm="Nama anda">Your name</label>
+              <input type="text" name="name" required
+                data-i18n-placeholder
+                data-en-placeholder="e.g., Phainon"
+                data-bm-placeholder="cth: Phainon"
+                placeholder="e.g., Phainon">
+            </div>
+
+            <div class="field reveal" data-delay="2">
+              <label data-i18n data-en="Email (optional)" data-bm="Email (pilihan)">Email (optional)</label>
+              <input type="email" name="email"
+                data-i18n-placeholder
+                data-en-placeholder="e.g., phainon@email.com"
+                data-bm-placeholder="cth: phainon@email.com"
+                placeholder="e.g., phainon@email.com">
+            </div>
+
+            <div class="field reveal" data-delay="3">
+              <label data-i18n data-en="Issue type" data-bm="Jenis isu">Issue type</label>
+              <select name="issue" required>
+                <option value="" data-i18n data-en="Select one" data-bm="Pilih satu">Select one</option>
+                <option value="Report listing" data-i18n data-en="Report listing" data-bm="Lapor listing">Report listing</option>
+                <option value="Request update" data-i18n data-en="Request update" data-bm="Minta kemas kini">Request update</option>
+                <option value="General question" data-i18n data-en="General question" data-bm="Soalan umum">General question</option>
+              </select>
+            </div>
+
+            <div class="field reveal" data-delay="4">
+              <label data-i18n data-en="Message" data-bm="Mesej">Message</label>
+              <textarea name="message" rows="5" required
+                data-i18n-placeholder
+                data-en-placeholder="Describe your message…"
+                data-bm-placeholder="Terangkan mesej anda…"
+                placeholder="Describe your message…"></textarea>
+            </div>
+
+            <button class="search-btn reveal" data-delay="2" id="sendBtn" type="submit" style="width:100%;"
+              data-i18n data-en="Send" data-bm="Hantar">Send</button>
+
+            <div class="pdf-row reveal" data-delay="3">
+              <button class="btn export" id="savePdfBtn" type="button"
+                data-i18n data-en="Save report as PDF" data-bm="Simpan laporan PDF">
+                Save report as PDF
+              </button>
+            </div>
+
+            <p class="muted reveal" data-delay="3" id="formNote" style="margin-top:10px;"></p>
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="pdfArea" class="pdf-area" aria-hidden="true"></section>
+
+  <footer class="footer reveal">
+    <div class="container">
+      <div class="footer-inner">
+        <div>© <span id="year"></span> ServiceHub</div>
+        <div data-i18n data-en="Contact" data-bm="Hubungi">Contact</div>
+      </div>
+    </div>
+  </footer>
+
+  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+</body>
+</html>

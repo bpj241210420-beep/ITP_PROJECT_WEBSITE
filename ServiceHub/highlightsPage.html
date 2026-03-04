@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light" data-lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ServiceHub — Highlights</title>
+
+  <link rel="stylesheet" href="common.css"/>
+  <link rel="stylesheet" href="homePagestyle.css"/>
+
+  <script defer src="servicesData.js"></script>
+  <script defer src="common.js"></script>
+  <script defer src="highlightsPagemain.js"></script>
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="container">
+      <div class="topbar-inner">
+        <a class="brand" href="homePage.html">
+          <div class="brand-badge">S</div>
+          <div class="brand-name">
+            <strong>ServiceHub</strong>
+            <span data-i18n data-en="Local Services Directory" data-bm="Direktori Servis Tempatan">Local Services Directory</span>
+          </div>
+        </a>
+
+        <form class="searchbar" data-search-form>
+          <div class="search-ic">🔎</div>
+          <input
+            type="text"
+            data-i18n-placeholder
+            data-en-placeholder="Search services (e.g., laundry pickup, car booking)"
+            data-bm-placeholder="Cari servis (cth: pickup laundry, tempah kereta)"
+            placeholder="Search services (e.g., laundry pickup, car booking)"
+          />
+          <select id="globalCat"></select>
+          <button class="search-btn" type="submit" data-i18n data-en="Search" data-bm="Cari">Search</button>
+        </form>
+
+        <div class="top-actions">
+          <div class="pill-group">
+            <button class="pill" type="button" data-action="lang-en">EN</button>
+            <button class="pill" type="button" data-action="lang-bm">BM</button>
+          </div>
+          <button class="icon-btn" type="button" data-action="toggle-theme">☀️</button>
+        </div>
+      </div>
+
+      <div class="navrow">
+        <nav class="navrow-inner">
+          <a href="homePage.html" data-nav>Home</a>
+          <a href="servicesPage.html" data-nav>Services</a>
+          <a href="highlightsPage.html" data-nav>Highlights</a>
+          <a href="whatWeProvidePage.html" data-nav>What we provide</a>
+          <a href="contactPage.html" data-nav>Contact</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <section class="section" style="padding-top:46px;">
+    <div class="container">
+      <div class="section-title">
+        <h2 data-i18n data-en="Explore service highlights" data-bm="Terokai sorotan servis">Explore service highlights</h2>
+        <p data-i18n
+           data-en="Auto-slide showcase of categories — click 'Services' to browse listings."
+           data-bm="Paparan auto-slide kategori — klik 'Services' untuk lihat listing.">
+          Auto-slide showcase of categories — click 'Services' to browse listings.
+        </p>
+      </div>
+
+      <div class="highlights-wrap card">
+        <button class="hi-nav hi-left" type="button">‹</button>
+
+        <div class="hi-viewport">
+          <div class="hi-track" id="hiTrack">
+            <article class="hi-item"><img src="assets/hi-cleaning.jpg" alt=""><h4>Cleaning Services</h4><p>House / room / office cleaning</p></article>
+            <article class="hi-item"><img src="assets/hi-laundry.jpg" alt=""><h4>Laundry & Ironing</h4><p>Pickup / drop-off</p></article>
+            <article class="hi-item"><img src="assets/hi-transport.jpg" alt=""><h4>Car Booking / Transport</h4><p>Rental / e-hailing / van</p></article>
+            <article class="hi-item"><img src="assets/hi-food.jpg" alt=""><h4>Food & Catering</h4><p>Tiffin / catering / home-based</p></article>
+            <article class="hi-item"><img src="assets/hi-printing.jpg" alt=""><h4>Printing & Stationery</h4><p>Printing / binding / name card</p></article>
+            <article class="hi-item"><img src="assets/hi-repair.jpg" alt=""><h4>Repair & Maintenance</h4><p>Phone/laptop / plumbing / electrical</p></article>
+          </div>
+        </div>
+
+        <button class="hi-nav hi-right" type="button">›</button>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div>© <span id="year"></span> ServiceHub</div>
+        <div>Highlights page</div>
+      </div>
+    </div>
+  </footer>
+
+  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+</body>
+</html>

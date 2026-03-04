@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light" data-lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ServiceHub — Service Details</title>
+
+  <link rel="stylesheet" href="common.css"/>
+  <link rel="stylesheet" href="serviceDetailsstyle.css"/>
+  <link rel="stylesheet" href="chatWidget.css"/>
+
+  <script defer src="servicesData.js"></script>
+  <script defer src="common.js"></script>
+  <script defer src="chatWidget.js"></script>
+  <script defer src="serviceDetailsmain.js"></script>
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="container">
+      <div class="topbar-inner">
+        <a class="brand" href="homePage.html">
+          <div class="brand-badge">S</div>
+          <div class="brand-name">
+            <strong>ServiceHub</strong>
+            <span data-i18n data-en="Local Services Directory" data-bm="Direktori Servis Tempatan">
+              Local Services Directory
+            </span>
+          </div>
+        </a>
+
+        <form class="searchbar" data-search-form>
+          <div class="search-ic">🔎</div>
+          <input
+            type="text"
+            data-i18n-placeholder
+            data-en-placeholder="Search services (e.g., laundry pickup, car booking)"
+            data-bm-placeholder="Cari servis (cth: pickup laundry, tempah kereta)"
+            placeholder="Search services (e.g., laundry pickup, car booking)"
+          />
+          <select id="globalCat"></select>
+          <button class="search-btn" type="submit" data-i18n data-en="Search" data-bm="Cari">Search</button>
+        </form>
+
+        <div class="top-actions">
+          <div class="pill-group" aria-label="language">
+            <button class="pill" type="button" data-action="lang-en">EN</button>
+            <button class="pill" type="button" data-action="lang-bm">BM</button>
+          </div>
+          <button class="icon-btn" type="button" title="Theme" data-action="toggle-theme">☀️</button>
+        </div>
+      </div>
+
+      <div class="navrow">
+        <nav class="navrow-inner">
+          <a href="homePage.html" data-nav data-i18n data-en="Home" data-bm="Utama">Home</a>
+          <a href="servicesPage.html" data-nav data-i18n data-en="Services" data-bm="Servis">Services</a>
+          <a href="whatWeProvidePage.html" data-nav data-i18n data-en="What we provide" data-bm="Apa kami sediakan">What we provide</a>
+          <a href="contactPage.html" data-nav data-i18n data-en="Contact" data-bm="Hubungi">Contact</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <section class="section" style="padding-top:54px;">
+    <div class="container">
+
+      <a class="back reveal" id="backToServices" href="servicesPage.html"
+        data-i18n data-en="← Back to Services" data-bm="← Kembali ke Servis">← Back to Services</a>
+
+      <div class="details card reveal" id="details"></div>
+
+      <div class="grid2">
+        <div class="card box reveal">
+          <h3 data-i18n data-en="Location" data-bm="Lokasi">Location</h3>
+          <p class="muted" data-i18n
+             data-en="View the location and get directions."
+             data-bm="Lihat lokasi dan dapatkan arah.">
+            View the location and get directions.
+          </p>
+
+          <div class="map" id="mapWrap"></div>
+
+          <div class="row">
+            <a class="btn" id="dirBtn" target="_blank" rel="noopener"
+               data-i18n data-en="Get directions" data-bm="Dapatkan arah">Get directions</a>
+          </div>
+        </div>
+
+        <div class="card box reveal">
+          <h3 data-i18n data-en="Reviews" data-bm="Ulasan">Reviews</h3>
+          <p class="muted" data-i18n
+             data-en="Share feedback to help others make better choices."
+             data-bm="Kongsi maklum balas untuk bantu orang lain membuat pilihan.">
+            Share feedback to help others make better choices.
+          </p>
+
+          <input
+            id="reviewName"
+            type="text"
+            style="width:100%; margin-top:10px;"
+            data-i18n-placeholder
+            data-en-placeholder="Your name (optional)"
+            data-bm-placeholder="Nama anda (pilihan)"
+            placeholder="Your name (optional)"
+          />
+
+          <div class="stars" id="stars"></div>
+
+          <textarea id="reviewText" rows="4"
+            data-i18n-placeholder
+            data-en-placeholder="Write your review..."
+            data-bm-placeholder="Tulis ulasan anda..."
+            placeholder="Write your review..."></textarea>
+
+          <div class="row">
+            <button class="btn primary" id="addReview" type="button"
+              data-i18n data-en="Add review" data-bm="Tambah ulasan">Add review</button>
+          </div>
+
+          <div class="reviews" id="reviews"></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div>© <span id="year"></span> ServiceHub</div>
+        <div data-i18n data-en="Service details" data-bm="Butiran servis">Service details</div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

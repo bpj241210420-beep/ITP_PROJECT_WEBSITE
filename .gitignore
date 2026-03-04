@@ -1,0 +1,4 @@
+node_modules/
+.env
+ServiceHub/.env
+.DS_Store

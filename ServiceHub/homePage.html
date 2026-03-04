@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light" data-lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ServiceHub — Home</title>
+
+  <link rel="stylesheet" href="common.css"/>
+  <link rel="stylesheet" href="homePagestyle.css"/>
+  <link rel="stylesheet" href="chatWidget.css"/>
+
+  <script defer src="servicesData.js"></script>
+  <script defer src="common.js"></script>
+  <script defer src="chatWidget.js"></script>
+  <script defer src="homePagemain.js"></script>
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="container">
+      <div class="topbar-inner">
+        <a class="brand" href="homePage.html">
+          <div class="brand-badge">S</div>
+          <div class="brand-name">
+            <strong>ServiceHub</strong>
+            <span data-i18n data-en="Local Services Directory" data-bm="Direktori Servis Tempatan">Local Services Directory</span>
+          </div>
+        </a>
+
+        <form class="searchbar" data-search-form>
+          <div class="search-ic">🔎</div>
+          <input
+            type="text"
+            data-i18n-placeholder
+            data-en-placeholder="Search services (e.g., laundry pickup, car booking)"
+            data-bm-placeholder="Cari servis (cth: pickup laundry, tempah kereta)"
+            placeholder="Search services (e.g., laundry pickup, car booking)"
+          />
+          <select id="globalCat"></select>
+          <button class="search-btn" type="submit" data-i18n data-en="Search" data-bm="Cari">Search</button>
+        </form>
+
+        <div class="top-actions">
+          <div class="pill-group" aria-label="language">
+            <button class="pill" type="button" data-action="lang-en">EN</button>
+            <button class="pill" type="button" data-action="lang-bm">BM</button>
+          </div>
+          <button class="icon-btn" type="button" title="Theme" data-action="toggle-theme">☀️</button>
+        </div>
+      </div>
+
+      <div class="navrow">
+        <nav class="navrow-inner">
+          <a href="homePage.html" data-nav data-i18n data-en="Home" data-bm="Utama">Home</a>
+          <a href="servicesPage.html" data-nav data-i18n data-en="Services" data-bm="Servis">Services</a>
+          <a href="whatWeProvidePage.html" data-nav data-i18n data-en="What we provide" data-bm="Apa kami sediakan">What we provide</a>
+          <a href="contactPage.html" data-nav data-i18n data-en="Contact" data-bm="Hubungi">Contact</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main class="home-hero">
+    <!-- ✅ Background container -->
+    <div class="home-hero-bg">
+      <!-- ✅ slideshow image layer (JS will change background-image here) -->
+      <div class="home-hero-photo" id="heroBgPhoto" aria-hidden="true"></div>
+      <!-- ✅ tint overlay so text readable -->
+      <div class="home-hero-tint" aria-hidden="true"></div>
+    </div>
+
+    <div class="container home-hero-inner">
+
+      <div class="hero-left">
+        <div class="hero-tags reveal">
+          <span class="tag">KPTM</span>
+          <span class="tag" data-i18n data-en="Batu Pahat" data-bm="Batu Pahat">Batu Pahat</span>
+          <span class="tag" data-i18n data-en="Student & Staff" data-bm="Pelajar & Staf">Student & Staff</span>
+        </div>
+
+        <h1 class="hero-title reveal" data-delay="1">
+          <span data-i18n data-en="We help you" data-bm="Kami bantu anda">We help you</span><br/>
+          <span data-i18n data-en="find services" data-bm="cari servis">find services</span><br/>
+          <span class="accent" data-i18n data-en="faster." data-bm="dengan cepat.">faster.</span>
+        </h1>
+
+        <p class="hero-sub reveal" data-delay="2"
+           data-i18n
+           data-en="Search neighbourhood services around Batu Pahat and contact providers directly — simple, clear, and student-friendly."
+           data-bm="Cari servis sekitar Batu Pahat dan hubungi penyedia terus — ringkas, jelas, dan mesra pelajar.">
+          Search neighbourhood services around Batu Pahat and contact providers directly — simple, clear, and student-friendly.
+        </p>
+
+        <div class="hero-cta reveal" data-delay="3">
+          <a class="btn-primary" href="servicesPage.html" data-i18n data-en="Browse Services" data-bm="Lihat Servis">Browse Services</a>
+          <a class="btn-ghost" href="whatWeProvidePage.html" data-i18n data-en="More details" data-bm="Maklumat lanjut">More details</a>
+        </div>
+
+        <div class="hero-metrics reveal" data-delay="2" aria-label="Quick access">
+          <div class="metric">
+            <div class="n">6+</div>
+            <div class="t" data-i18n data-en="Categories" data-bm="Kategori">Categories</div>
+          </div>
+          <div class="metric">
+            <div class="n" data-i18n data-en="Fast" data-bm="Pantas">Fast</div>
+            <div class="t" data-i18n data-en="Search & filter" data-bm="Carian & penapis">Search & filter</div>
+          </div>
+          <div class="metric">
+            <div class="n" data-i18n data-en="Direct" data-bm="Terus">Direct</div>
+            <div class="t" data-i18n data-en="WhatsApp / Call" data-bm="WhatsApp / Call">WhatsApp / Call</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ✅ Removed preview image box completely -->
+      <!-- <div class="hero-right reveal" data-delay="1"> ... </div> -->
+
+    </div>
+  </main>
+
+  <footer class="footer reveal">
+    <div class="container">
+      <div class="footer-inner">
+        <div>© <span id="year"></span> ServiceHub</div>
+        <div data-i18n data-en="Built for local community use." data-bm="Dibina untuk kegunaan komuniti.">Built for local community use.</div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

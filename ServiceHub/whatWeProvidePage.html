@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light" data-lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ServiceHub — What we provide</title>
+
+  <link rel="stylesheet" href="common.css"/>
+  <link rel="stylesheet" href="whatWeProvidestyle.css"/>
+  <link rel="stylesheet" href="chatWidget.css"/>
+
+  <script defer src="servicesData.js"></script>
+  <script defer src="common.js"></script>
+  <script defer src="chatWidget.js"></script>
+  <script defer src="whatWeProvideMain.js"></script>
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="container">
+      <div class="topbar-inner">
+        <a class="brand" href="homePage.html">
+          <div class="brand-badge">S</div>
+          <div class="brand-name">
+            <strong>ServiceHub</strong>
+            <span data-i18n data-en="Local Services Directory" data-bm="Direktori Servis Tempatan">
+              Local Services Directory
+            </span>
+          </div>
+        </a>
+
+        <form class="searchbar" data-search-form>
+          <div class="search-ic">🔎</div>
+          <input
+            type="text"
+            data-i18n-placeholder
+            data-en-placeholder="Search services (e.g., laundry pickup, car booking)"
+            data-bm-placeholder="Cari servis (cth: pickup laundry, tempah kereta)"
+            placeholder="Search services (e.g., laundry pickup, car booking)"
+          />
+          <select id="globalCat"></select>
+          <button class="search-btn" type="submit" data-i18n data-en="Search" data-bm="Cari">Search</button>
+        </form>
+
+        <div class="top-actions">
+          <div class="pill-group" aria-label="language">
+            <button class="pill" type="button" data-action="lang-en">EN</button>
+            <button class="pill" type="button" data-action="lang-bm">BM</button>
+          </div>
+          <button class="icon-btn" type="button" title="Theme" data-action="toggle-theme">☀️</button>
+        </div>
+      </div>
+
+      <div class="navrow">
+        <nav class="navrow-inner">
+          <a href="homePage.html" data-nav data-i18n data-en="Home" data-bm="Utama">Home</a>
+          <a href="servicesPage.html" data-nav data-i18n data-en="Services" data-bm="Servis">Services</a>
+          <a href="whatWeProvidePage.html" data-nav data-i18n data-en="What we provide" data-bm="Apa kami sediakan">What we provide</a>
+          <a href="contactPage.html" data-nav data-i18n data-en="Contact" data-bm="Hubungi">Contact</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main class="provide-page">
+
+    <section class="p-hero">
+      <div class="container">
+        <div class="p-hero-grid">
+          <div class="p-hero-text reveal">
+            <span class="p-kicker" data-i18n
+              data-en="A directory-style experience for local services"
+              data-bm="Pengalaman gaya direktori untuk servis tempatan">
+              A directory-style experience for local services
+            </span>
+
+            <h1 class="p-title" data-i18n
+              data-en="What we provide"
+              data-bm="Apa yang kami sediakan">
+              What we provide
+            </h1>
+
+            <p class="p-sub" data-i18n
+              data-en="ServiceHub helps users discover trusted local providers—then contact, review, and report listings easily."
+              data-bm="ServiceHub bantu pengguna cari penyedia servis tempatan—kemudian hubungi, beri ulasan, dan lapor listing dengan mudah.">
+              ServiceHub helps users discover trusted local providers—then contact, review, and report listings easily.
+            </p>
+
+            <div class="p-hero-metrics">
+              <div class="p-metric reveal" data-delay="1">
+                <strong>9+</strong>
+                <span data-i18n data-en="Categories" data-bm="Kategori">Categories</span>
+              </div>
+              <div class="p-metric reveal" data-delay="2">
+                <strong>Search</strong>
+                <span data-i18n data-en="Keyword + category filter" data-bm="Carian + tapisan kategori">Keyword + category filter</span>
+              </div>
+              <div class="p-metric reveal" data-delay="3">
+                <strong>Reviews</strong>
+                <span data-i18n data-en="Community feedback" data-bm="Maklum balas komuniti">Community feedback</span>
+              </div>
+            </div>
+
+            <div class="p-hero-cta reveal" data-delay="2">
+              <a class="p-btn primary" href="servicesPage.html"
+                 data-i18n data-en="Browse Services" data-bm="Lihat Servis">
+                Browse Services
+              </a>
+              <a class="p-btn ghost" href="contactPage.html"
+                 data-i18n data-en="Contact / Report" data-bm="Hubungi / Lapor">
+                Contact / Report
+              </a>
+            </div>
+          </div>
+
+          <div class="p-hero-media reveal" data-delay="1">
+            <div class="p-media-card" id="provideCarousel">
+              <div class="p-media-top">
+                <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+                <span class="p-media-label" data-i18n data-en="Preview" data-bm="Paparan">Preview</span>
+              </div>
+
+              <div class="p-media-frame">
+                <img class="p-media-img is-active" data-asset="previewone.jpg" alt="Preview 1">
+                <img class="p-media-img" data-asset="previewtwo.webp" alt="Preview 2">
+                <img class="p-media-img" data-asset="previewthree.jpg" alt="Preview 3">
+              </div>
+
+              <div class="p-media-caption" data-i18n
+                data-en="Smooth browsing experience — designed for students & local communities."
+                data-bm="Pengalaman browsing yang smooth — direka untuk pelajar & komuniti setempat.">
+                Smooth browsing experience — designed for students & local communities.
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="p-section">
+      <div class="container">
+        <div class="p-about reveal">
+          <div class="p-about-head">
+            <h2 class="p-about-title" data-i18n data-en="About ServiceHub" data-bm="Tentang ServiceHub">
+              About ServiceHub
+            </h2>
+            <p class="p-about-sub" data-i18n
+              data-en="ServiceHub is a directory designed to help students and local communities discover services around Batu Pahat—then connect with providers quickly through call, WhatsApp, and maps."
+              data-bm="ServiceHub ialah direktori yang direka untuk membantu pelajar dan komuniti setempat mencari servis sekitar Batu Pahat—kemudian hubungi penyedia dengan pantas melalui telefon, WhatsApp, dan peta.">
+              ServiceHub is a directory designed to help students and local communities discover services around Batu Pahat—then connect with providers quickly through call, WhatsApp, and maps.
+            </p>
+          </div>
+
+          <div class="p-about-grid">
+            <div class="p-about-item">
+              <div class="p-about-kicker" data-i18n data-en="What you can do" data-bm="Apa yang anda boleh buat">
+                What you can do
+              </div>
+              <ul class="p-about-list">
+                <li data-i18n data-en="Search by keyword and filter by category & area." data-bm="Cari guna kata kunci dan tapis ikut kategori & kawasan.">
+                  Search by keyword and filter by category & area.
+                </li>
+                <li data-i18n data-en="Open a listing to view details, location, and quick actions." data-bm="Buka listing untuk lihat butiran, lokasi, dan aksi pantas.">
+                  Open a listing to view details, location, and quick actions.
+                </li>
+                <li data-i18n data-en="Contact providers directly without extra steps." data-bm="Hubungi penyedia terus tanpa langkah tambahan.">
+                  Contact providers directly without extra steps.
+                </li>
+              </ul>
+            </div>
+
+            <div class="p-about-item">
+              <div class="p-about-kicker" data-i18n data-en="Built for clarity" data-bm="Dibina untuk jelas">
+                Built for clarity
+              </div>
+              <ul class="p-about-list">
+                <li data-i18n data-en="Clean layout focused on essential information." data-bm="Paparan kemas fokus pada info penting.">
+                  Clean layout focused on essential information.
+                </li>
+                <li data-i18n data-en="Consistent navigation and bilingual support (EN/BM)." data-bm="Navigasi konsisten dan sokongan dwibahasa (EN/BM).">
+                  Consistent navigation and bilingual support (EN/BM).
+                </li>
+                <li data-i18n data-en="Optimized for fast browsing on student-friendly devices." data-bm="Dioptimumkan untuk browsing pantas pada peranti pelajar.">
+                  Optimized for fast browsing on student-friendly devices.
+                </li>
+              </ul>
+            </div>
+
+            <div class="p-about-item">
+              <div class="p-about-kicker" data-i18n data-en="Feedback & reporting" data-bm="Maklum balas & laporan">
+                Feedback & reporting
+              </div>
+              <ul class="p-about-list">
+                <li data-i18n data-en="Add reviews to help others compare options." data-bm="Tambah ulasan untuk bantu orang lain banding pilihan.">
+                  Add reviews to help others compare options.
+                </li>
+                <li data-i18n data-en="Report a listing easily through Contact / Report." data-bm="Lapor listing dengan mudah melalui Contact / Report.">
+                  Report a listing easily through Contact / Report.
+                </li>
+                <li data-i18n data-en="Encourages a better, safer directory experience." data-bm="Galakkan pengalaman direktori yang lebih baik dan selamat.">
+                  Encourages a better, safer directory experience.
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="p-about-foot">
+            <a class="p-btn primary" href="servicesPage.html" data-i18n data-en="Explore services" data-bm="Teroka servis">Explore services</a>
+            <a class="p-btn ghost" href="contactPage.html" data-i18n data-en="Suggest or report" data-bm="Cadang atau lapor">Suggest or report</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="p-section">
+      <div class="container">
+        <div class="p-split">
+          <div class="p-split-media reveal">
+            <img class="p-img" data-asset="directory.jpeg" alt="Directory">
+          </div>
+
+          <div class="p-split-text reveal" data-delay="1">
+            <h2 data-i18n data-en="Directory listings" data-bm="Senarai direktori">
+              Directory listings
+            </h2>
+            <p data-i18n
+              data-en="Each listing shows area, address, category, tags, and quick actions (call / WhatsApp / map)."
+              data-bm="Setiap listing tunjuk kawasan, alamat, kategori, tag, dan aksi pantas (telefon / WhatsApp / peta).">
+              Each listing shows area, address, category, tags, and quick actions (call / WhatsApp / map).
+            </p>
+
+            <ul class="p-list">
+              <li data-i18n data-en="Search by keyword" data-bm="Cari guna kata kunci">Search by keyword</li>
+              <li data-i18n data-en="Filter by category & area" data-bm="Tapis ikut kategori & kawasan">Filter by category & area</li>
+              <li data-i18n data-en="Sort by rating" data-bm="Susun ikut rating">Sort by rating</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div>© <span id="year"></span> ServiceHub</div>
+        <div data-i18n data-en="What we provide" data-bm="Apa kami sediakan">What we provide</div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    (function () {
+      const p = String(location.pathname || "").replaceAll("\\", "/");
+      const base = p.includes("/ServiceHub/") ? "../assets/" : "assets/";
+
+      document.querySelectorAll("img[data-asset]").forEach(img => {
+        const file = img.getAttribute("data-asset") || "";
+        if (!file) return;
+        img.src = encodeURI(base + file);
+      });
+    })();
+  </script>
+</body>
+</html>

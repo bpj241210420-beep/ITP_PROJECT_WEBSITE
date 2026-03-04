@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light" data-lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ServiceHub — Services</title>
+
+  <link rel="stylesheet" href="common.css"/>
+  <link rel="stylesheet" href="servicesstyle.css"/>
+  <link rel="stylesheet" href="chatWidget.css"/>
+
+  <script defer src="servicesData.js"></script>
+  <script defer src="common.js"></script>
+  <script defer src="chatWidget.js"></script>
+  <script defer src="servicesPagemain.js"></script>
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="container">
+      <div class="topbar-inner">
+        <a class="brand" href="homePage.html">
+          <div class="brand-badge">S</div>
+          <div class="brand-name">
+            <strong>ServiceHub</strong>
+            <span data-i18n data-en="Local Services Directory" data-bm="Direktori Servis Tempatan">
+              Local Services Directory
+            </span>
+          </div>
+        </a>
+
+        <form class="searchbar" data-search-form>
+          <div class="search-ic">🔎</div>
+          <input
+            type="text"
+            data-i18n-placeholder
+            data-en-placeholder="Search services (e.g., laundry pickup, car booking)"
+            data-bm-placeholder="Cari servis (cth: pickup laundry, tempah kereta)"
+            placeholder="Search services (e.g., laundry pickup, car booking)"
+          />
+          <select id="globalCat"></select>
+          <button class="search-btn" type="submit"
+            data-i18n data-en="Search" data-bm="Cari">Search</button>
+        </form>
+
+        <div class="top-actions">
+          <div class="pill-group" aria-label="language">
+            <button class="pill" type="button" data-action="lang-en">EN</button>
+            <button class="pill" type="button" data-action="lang-bm">BM</button>
+          </div>
+          <button class="icon-btn" type="button" title="Theme" data-action="toggle-theme">☀️</button>
+        </div>
+      </div>
+
+      <div class="navrow">
+        <nav class="navrow-inner">
+          <a href="homePage.html" data-nav data-i18n data-en="Home" data-bm="Utama">Home</a>
+          <a href="servicesPage.html" data-nav data-i18n data-en="Services" data-bm="Servis">Services</a>
+          <a href="whatWeProvidePage.html" data-nav data-i18n data-en="What we provide" data-bm="Apa kami sediakan">What we provide</a>
+          <a href="contactPage.html" data-nav data-i18n data-en="Contact" data-bm="Hubungi">Contact</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <section class="section" style="padding-top:54px;">
+    <div class="container">
+
+      <div class="section-title reveal">
+        <h2 data-i18n data-en="Services Directory" data-bm="Direktori Servis">
+          Services Directory
+        </h2>
+        <p data-i18n
+           data-en="Filter by category and search keywords. Click a listing to view full details."
+           data-bm="Tapis ikut kategori dan kata kunci. Klik listing untuk lihat butiran penuh.">
+          Filter by category and search keywords. Click a listing to view full details.
+        </p>
+      </div>
+
+      <div class="filters card reveal" data-delay="1">
+        <div class="f-row">
+          <div class="f-field">
+            <label data-i18n data-en="Keyword" data-bm="Kata kunci">Keyword</label>
+            <input
+              id="q"
+              type="text"
+              data-i18n-placeholder
+              data-en-placeholder="e.g., laundry, printing, car rental"
+              data-bm-placeholder="cth: dobi, printing, sewa kereta"
+              placeholder="e.g., laundry, printing, car rental"
+            >
+          </div>
+
+          <div class="f-field">
+            <label data-i18n data-en="Category" data-bm="Kategori">Category</label>
+            <select id="cat"></select>
+          </div>
+
+          <div class="f-field">
+            <label data-i18n data-en="Area" data-bm="Kawasan">Area</label>
+            <input
+              id="area"
+              type="text"
+              data-i18n-placeholder
+              data-en-placeholder="e.g., Batu Pahat / Parit Raja"
+              data-bm-placeholder="cth: Batu Pahat / Parit Raja"
+              placeholder="e.g., Batu Pahat / Parit Raja"
+            >
+          </div>
+
+          <div class="f-field">
+            <label data-i18n data-en="Sort" data-bm="Susun">Sort</label>
+            <select id="sort">
+              <option value="name" data-i18n data-en="Name (A–Z)" data-bm="Nama (A–Z)">Name (A–Z)</option>
+              <option value="cat" data-i18n data-en="Category" data-bm="Kategori">Category</option>
+              <option value="rating" data-i18n data-en="Rating (High → Low)" data-bm="Rating (Tinggi → Rendah)">Rating (High → Low)</option>
+            </select>
+          </div>
+
+          <div class="f-actions">
+            <button class="search-btn" id="apply" data-i18n data-en="Apply" data-bm="Tapis">Apply</button>
+            <button class="ghost" id="reset" type="button" data-i18n data-en="Reset" data-bm="Reset">Reset</button>
+          </div>
+        </div>
+
+        <div class="f-meta">
+          <span id="count">0 results</span>
+          <span class="dot">•</span>
+          <span data-i18n
+            data-en="Tip: Click a card to open details & map."
+            data-bm="Tip: Klik kad untuk details & peta.">
+            Tip: Click a card to open details & map.
+          </span>
+        </div>
+      </div>
+
+      <div class="grid" id="grid"></div>
+
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div>© <span id="year"></span> ServiceHub</div>
+        <div data-i18n
+             data-en="Directory-style experience for local services."
+             data-bm="Pengalaman direktori untuk servis tempatan.">
+          Directory-style experience for local services.
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
