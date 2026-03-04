@@ -5,23 +5,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>ServiceHub — Services</title>
 
-  <!-- ✅ FIX -->
-  <link rel="stylesheet" href="/ServiceHub/common.css"/>
-  <link rel="stylesheet" href="/ServiceHub/servicesstyle.css"/>
-  <link rel="stylesheet" href="/ServiceHub/chatWidget.css"/>
+  <link rel="stylesheet" href="/common.css"/>
+  <link rel="stylesheet" href="/servicesstyle.css"/>
+  <link rel="stylesheet" href="/chatWidget.css"/>
 
-  <!-- ✅ FIX -->
-  <script defer src="/ServiceHub/servicesData.js"></script>
-  <script defer src="/ServiceHub/common.js"></script>
-  <script defer src="/ServiceHub/chatWidget.js"></script>
-  <script defer src="/ServiceHub/servicesPagemain.js"></script>
+  <script defer src="/servicesData.js"></script>
+  <script defer src="/common.js"></script>
+  <script defer src="/chatWidget.js"></script>
+  <script defer src="/servicesPagemain.js"></script>
 </head>
 <body>
 
   <header class="topbar">
     <div class="container">
       <div class="topbar-inner">
-        <a class="brand" href="/ServiceHub/homePage.html">
+        <a class="brand" href="/homePage.html">
           <div class="brand-badge">S</div>
           <div class="brand-name">
             <strong>ServiceHub</strong>
@@ -56,10 +54,10 @@
 
       <div class="navrow">
         <nav class="navrow-inner">
-          <a href="/ServiceHub/homePage.html" data-nav data-i18n data-en="Home" data-bm="Utama">Home</a>
-          <a href="/ServiceHub/servicesPage.html" data-nav data-i18n data-en="Services" data-bm="Servis">Services</a>
-          <a href="/ServiceHub/whatWeProvidePage.html" data-nav data-i18n data-en="What we provide" data-bm="Apa kami sediakan">What we provide</a>
-          <a href="/ServiceHub/contactPage.html" data-nav data-i18n data-en="Contact" data-bm="Hubungi">Contact</a>
+          <a href="/homePage.html" data-nav data-i18n data-en="Home" data-bm="Utama">Home</a>
+          <a href="/servicesPage.html" data-nav data-i18n data-en="Services" data-bm="Servis">Services</a>
+          <a href="/whatWeProvidePage.html" data-nav data-i18n data-en="What we provide" data-bm="Apa kami sediakan">What we provide</a>
+          <a href="/contactPage.html" data-nav data-i18n data-en="Contact" data-bm="Hubungi">Contact</a>
         </nav>
       </div>
     </div>
@@ -69,9 +67,7 @@
     <div class="container">
 
       <div class="section-title reveal">
-        <h2 data-i18n data-en="Services Directory" data-bm="Direktori Servis">
-          Services Directory
-        </h2>
+        <h2 data-i18n data-en="Services Directory" data-bm="Direktori Servis">Services Directory</h2>
         <p data-i18n
            data-en="Filter by category and search keywords. Click a listing to view full details."
            data-bm="Tapis ikut kategori dan kata kunci. Klik listing untuk lihat butiran penuh.">
@@ -83,14 +79,11 @@
         <div class="f-row">
           <div class="f-field">
             <label data-i18n data-en="Keyword" data-bm="Kata kunci">Keyword</label>
-            <input
-              id="q"
-              type="text"
+            <input id="q" type="text"
               data-i18n-placeholder
               data-en-placeholder="e.g., laundry, printing, car rental"
               data-bm-placeholder="cth: dobi, printing, sewa kereta"
-              placeholder="e.g., laundry, printing, car rental"
-            >
+              placeholder="e.g., laundry, printing, car rental">
           </div>
 
           <div class="f-field">
@@ -100,14 +93,11 @@
 
           <div class="f-field">
             <label data-i18n data-en="Area" data-bm="Kawasan">Area</label>
-            <input
-              id="area"
-              type="text"
+            <input id="area" type="text"
               data-i18n-placeholder
               data-en-placeholder="e.g., Batu Pahat / Parit Raja"
               data-bm-placeholder="cth: Batu Pahat / Parit Raja"
-              placeholder="e.g., Batu Pahat / Parit Raja"
-            >
+              placeholder="e.g., Batu Pahat / Parit Raja">
           </div>
 
           <div class="f-field">
@@ -128,9 +118,7 @@
         <div class="f-meta">
           <span id="count">0 results</span>
           <span class="dot">•</span>
-          <span data-i18n
-            data-en="Tip: Click a card to open details & map."
-            data-bm="Tip: Klik kad untuk details & peta.">
+          <span data-i18n data-en="Tip: Click a card to open details & map." data-bm="Tip: Klik kad untuk details & peta.">
             Tip: Click a card to open details & map.
           </span>
         </div>
@@ -145,9 +133,7 @@
     <div class="container">
       <div class="footer-inner">
         <div>© <span id="year"></span> ServiceHub</div>
-        <div data-i18n
-             data-en="Directory-style experience for local services."
-             data-bm="Pengalaman direktori untuk servis tempatan.">
+        <div data-i18n data-en="Directory-style experience for local services." data-bm="Pengalaman direktori untuk servis tempatan.">
           Directory-style experience for local services.
         </div>
       </div>

@@ -5,27 +5,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>ServiceHub — Contact</title>
 
-  <!-- ✅ FIX -->
-  <link rel="stylesheet" href="/ServiceHub/common.css"/>
-  <link rel="stylesheet" href="/ServiceHub/contactstyle.css"/>
-  <link rel="stylesheet" href="/ServiceHub/chatWidget.css"/>
+  <link rel="stylesheet" href="/common.css"/>
+  <link rel="stylesheet" href="/contactstyle.css"/>
+  <link rel="stylesheet" href="/chatWidget.css"/>
 
-  <!-- ✅ FIX -->
-  <script defer src="/ServiceHub/servicesData.js"></script>
-  <script defer src="/ServiceHub/common.js"></script>
-  <script defer src="/ServiceHub/chatWidget.js"></script>
-  <script defer src="/ServiceHub/contactPagemain.js"></script>
+  <script defer src="/servicesData.js"></script>
+  <script defer src="/common.js"></script>
+  <script defer src="/chatWidget.js"></script>
+  <script defer src="/contactPagemain.js"></script>
 </head>
 <body>
 
   <header class="topbar">
     <div class="container">
       <div class="topbar-inner">
-        <a class="brand" href="/ServiceHub/homePage.html">
+        <a class="brand" href="/homePage.html">
           <div class="brand-badge">S</div>
           <div class="brand-name">
             <strong>ServiceHub</strong>
-            <span data-i18n data-en="Local Services Directory" data-bm="Direktori Servis Tempatan">Local Services Directory</span>
+            <span data-i18n data-en="Local Services Directory" data-bm="Direktori Servis Tempatan">
+              Local Services Directory
+            </span>
           </div>
         </a>
 
@@ -43,20 +43,20 @@
         </form>
 
         <div class="top-actions">
-          <div class="pill-group">
+          <div class="pill-group" aria-label="language">
             <button class="pill" type="button" data-action="lang-en">EN</button>
             <button class="pill" type="button" data-action="lang-bm">BM</button>
           </div>
-          <button class="icon-btn" type="button" data-action="toggle-theme">☀️</button>
+          <button class="icon-btn" type="button" title="Theme" data-action="toggle-theme">☀️</button>
         </div>
       </div>
 
       <div class="navrow">
         <nav class="navrow-inner">
-          <a href="/ServiceHub/homePage.html" data-nav data-i18n data-en="Home" data-bm="Utama">Home</a>
-          <a href="/ServiceHub/servicesPage.html" data-nav data-i18n data-en="Services" data-bm="Servis">Services</a>
-          <a href="/ServiceHub/whatWeProvidePage.html" data-nav data-i18n data-en="What we provide" data-bm="Apa kami sediakan">What we provide</a>
-          <a href="/ServiceHub/contactPage.html" data-nav data-i18n data-en="Contact" data-bm="Hubungi">Contact</a>
+          <a href="/homePage.html" data-nav data-i18n data-en="Home" data-bm="Utama">Home</a>
+          <a href="/servicesPage.html" data-nav data-i18n data-en="Services" data-bm="Servis">Services</a>
+          <a href="/whatWeProvidePage.html" data-nav data-i18n data-en="What we provide" data-bm="Apa kami sediakan">What we provide</a>
+          <a href="/contactPage.html" data-nav data-i18n data-en="Contact" data-bm="Hubungi">Contact</a>
         </nav>
       </div>
     </div>
@@ -121,7 +121,6 @@
             <input type="hidden" name="access_key" value="e0f398ac-18db-4bf1-a23c-498f9c850691">
             <input type="hidden" name="subject" value="ServiceHub — New Contact/Report">
             <input type="hidden" name="from_name" value="ServiceHub Website">
-
             <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
 
             <input type="hidden" name="page" value="contactPage.html">
@@ -200,6 +199,8 @@
     </div>
   </footer>
 
-  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>

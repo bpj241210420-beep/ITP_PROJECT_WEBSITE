@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>ServiceHub — Service Details</title>
 
+  <!-- ✅ use relative paths (same folder: ServiceHub/) -->
   <link rel="stylesheet" href="common.css"/>
   <link rel="stylesheet" href="serviceDetailsstyle.css"/>
   <link rel="stylesheet" href="chatWidget.css"/>
@@ -19,7 +20,7 @@
   <header class="topbar">
     <div class="container">
       <div class="topbar-inner">
-        <a class="brand" href="homePage.html">
+        <a class="brand" href="/homePage.html">
           <div class="brand-badge">S</div>
           <div class="brand-name">
             <strong>ServiceHub</strong>
@@ -39,7 +40,9 @@
             placeholder="Search services (e.g., laundry pickup, car booking)"
           />
           <select id="globalCat"></select>
-          <button class="search-btn" type="submit" data-i18n data-en="Search" data-bm="Cari">Search</button>
+          <button class="search-btn" type="submit" data-i18n data-en="Search" data-bm="Cari">
+            Search
+          </button>
         </form>
 
         <div class="top-actions">
@@ -53,10 +56,10 @@
 
       <div class="navrow">
         <nav class="navrow-inner">
-          <a href="homePage.html" data-nav data-i18n data-en="Home" data-bm="Utama">Home</a>
-          <a href="servicesPage.html" data-nav data-i18n data-en="Services" data-bm="Servis">Services</a>
-          <a href="whatWeProvidePage.html" data-nav data-i18n data-en="What we provide" data-bm="Apa kami sediakan">What we provide</a>
-          <a href="contactPage.html" data-nav data-i18n data-en="Contact" data-bm="Hubungi">Contact</a>
+          <a href="/homePage.html" data-nav data-i18n data-en="Home" data-bm="Utama">Home</a>
+          <a href="/servicesPage.html" data-nav data-i18n data-en="Services" data-bm="Servis">Services</a>
+          <a href="/whatWeProvidePage.html" data-nav data-i18n data-en="What we provide" data-bm="Apa kami sediakan">What we provide</a>
+          <a href="/contactPage.html" data-nav data-i18n data-en="Contact" data-bm="Hubungi">Contact</a>
         </nav>
       </div>
     </div>
@@ -65,8 +68,10 @@
   <section class="section" style="padding-top:54px;">
     <div class="container">
 
-      <a class="back reveal" id="backToServices" href="servicesPage.html"
-        data-i18n data-en="← Back to Services" data-bm="← Kembali ke Servis">← Back to Services</a>
+      <a class="back reveal" id="backToServices" href="/servicesPage.html"
+         data-i18n data-en="← Back to Services" data-bm="← Kembali ke Servis">
+        ← Back to Services
+      </a>
 
       <div class="details card reveal" id="details"></div>
 
@@ -83,7 +88,9 @@
 
           <div class="row">
             <a class="btn" id="dirBtn" target="_blank" rel="noopener"
-               data-i18n data-en="Get directions" data-bm="Dapatkan arah">Get directions</a>
+               data-i18n data-en="Get directions" data-bm="Dapatkan arah">
+              Get directions
+            </a>
           </div>
         </div>
 
@@ -115,7 +122,9 @@
 
           <div class="row">
             <button class="btn primary" id="addReview" type="button"
-              data-i18n data-en="Add review" data-bm="Tambah ulasan">Add review</button>
+              data-i18n data-en="Add review" data-bm="Tambah ulasan">
+              Add review
+            </button>
           </div>
 
           <div class="reviews" id="reviews"></div>

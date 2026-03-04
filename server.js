@@ -14,11 +14,11 @@ const PORT = process.env.PORT ? Number(process.env.PORT) : 3000;
 const OLLAMA_BASE = process.env.OLLAMA_BASE || "http://127.0.0.1:11434";
 const OLLAMA_MODEL = process.env.OLLAMA_MODEL || "phi3:mini";
 
-// Frontend folder
+// Frontend folder (this folder contains your html/css/js files)
 const STATIC_DIR = process.env.STATIC_DIR || "ServiceHub";
 
-// Assets folder at repo root
-const ASSETS_DIR = process.env.ASSETS_DIR || "assets";
+// ✅ IMPORTANT: Your assets folder is INSIDE ServiceHub/assets (based on your screenshot)
+const ASSETS_DIR = process.env.ASSETS_DIR || path.join(STATIC_DIR, "assets");
 
 // Optional allowlist
 const ALLOWED_ORIGINS = (process.env.ALLOWED_ORIGINS || "")
@@ -92,10 +92,10 @@ function rateLimit(req, res, next) {
 }
 
 // ---------- STATIC FRONTEND ----------
-// Serve ServiceHub folder at root URL
+// Serve ServiceHub folder at root URL: /homePage.html /common.css /common.js ...
 app.use(express.static(path.join(__dirname, STATIC_DIR)));
 
-// Serve /assets from repo root
+// ✅ Serve /assets from ServiceHub/assets
 app.use("/assets", express.static(path.join(__dirname, ASSETS_DIR)));
 
 // Default landing
