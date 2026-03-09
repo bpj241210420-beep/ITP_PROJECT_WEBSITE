@@ -4,7 +4,7 @@ console.log("✅ whatWeProvideMain.js LOADED vFIXED", new Date().toISOString());
 (function () {
   // ---------- helpers ----------
   function assetUrl(file) {
-    return encodeURI(`/assets/${file}`);
+    return encodeURI(`./assets/${file}`);
   }
 
   // ---------- CAROUSEL ----------
@@ -13,7 +13,7 @@ console.log("✅ whatWeProvideMain.js LOADED vFIXED", new Date().toISOString());
     // ✅ target only images in the frame
     const imgs = Array.from(wrap.querySelectorAll(".p-media-frame .p-media-img"));
 
-    // set src from data-asset (absolute /assets)
+    // set src from data-asset (relative ./assets)
     imgs.forEach((img) => {
       const file = (img.getAttribute("data-asset") || "").trim();
       if (!file) return;
@@ -96,7 +96,7 @@ console.log("✅ whatWeProvideMain.js LOADED vFIXED", new Date().toISOString());
         return;
       }
 
-      // ✅ ensure first image is decoded (helps CSS transition not stuck)
+      // ✅ ensure first image is decoded
       const first = goodImgs[0];
       try {
         if (first.decode) await first.decode();

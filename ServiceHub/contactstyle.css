@@ -1,5 +1,59 @@
 /* contactstyle.css */
 
+.support-highlights{
+  display:grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 22px;
+  margin-bottom: 8px;
+}
+
+.support-card{
+  padding: 18px 16px;
+  border-radius: 18px;
+  border: 1px solid rgba(122,92,255,.16);
+  background: rgba(255,255,255,.72);
+  box-shadow: 0 12px 28px rgba(17, 10, 40, .06);
+  transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease, background .18s ease;
+}
+.support-card:hover{
+  transform: translateY(-3px);
+  box-shadow: 0 16px 32px rgba(17,10,40,.10);
+  border-color: rgba(122,92,255,.24);
+}
+
+.support-card:hover .support-icon{
+  transform: translateY(-1px) scale(1.03);
+  box-shadow: 0 12px 24px rgba(122,92,255,.14);
+}
+
+.support-icon{
+  width: 48px;
+  height: 48px;
+  display:grid;
+  place-items:center;
+  border-radius: 14px;
+  margin-bottom: 12px;
+  font-size: 22px;
+  background: rgba(122,92,255,.10);
+  border: 1px solid rgba(122,92,255,.16);
+  transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+}
+
+.support-card h3{
+  margin: 0 0 8px;
+  font-size: 17px;
+  font-weight: 1000;
+  color: var(--text);
+}
+
+.support-card p{
+  margin: 0;
+  color: rgba(91,87,114,.95);
+  line-height: 1.7;
+  font-size: 14px;
+}
+
 .contact-grid{
   display:grid;
   grid-template-columns: 1fr 1fr;
@@ -28,7 +82,14 @@
   background: linear-gradient(135deg, #25D366, #18a74f);
   color: white;
   text-align:center;
+  transition: transform .15s ease, filter .15s ease, box-shadow .15s ease;
 }
+.wa-btn:hover{
+  transform: translateY(-1px);
+  filter: brightness(1.02);
+  box-shadow: 0 14px 24px rgba(24,167,79,.20);
+}
+
 .copy-btn{
   border-radius: 14px;
   padding: 12px 14px;
@@ -36,6 +97,12 @@
   border: 1px solid rgba(17, 15, 28, .12);
   background: rgba(255,255,255,.60);
   cursor:pointer;
+  transition: transform .15s ease, border-color .15s ease, box-shadow .15s ease, background .15s ease;
+}
+.copy-btn:hover{
+  transform: translateY(-1px);
+  border-color: rgba(122,92,255,.20);
+  box-shadow: 0 10px 20px rgba(17,10,40,.08);
 }
 
 .disclaimer{
@@ -57,6 +124,7 @@
 }
 
 @media (max-width: 920px){
+  .support-highlights{ grid-template-columns: 1fr; }
   .contact-grid{ grid-template-columns: 1fr; }
 }
 
@@ -85,12 +153,11 @@
 
 /* ✅ PRINT: show only pdfArea */
 @media print{
-  header, .footer, .topbar, .navrow, .section-title, .contact-grid { display:none !important; }
+  header, .footer, .topbar, .navrow, .section-title, .support-highlights, .contact-grid { display:none !important; }
 
   body{ background:#fff !important; }
   #pdfArea{ display:block !important; }
 
-  /* remove margins */
   .container{ max-width: 100% !important; padding: 0 !important; }
 }
 
@@ -135,15 +202,12 @@
 
 /* =========================
    NICE FORM BUTTON SPACING
-   Paste at BOTTOM of contactstyle.css
 ========================= */
 
-/* Make form area feel cleaner */
 .form-card{
   padding: 24px;
 }
 
-/* Better spacing between fields */
 .field{
   display:flex;
   flex-direction:column;
@@ -158,7 +222,6 @@
   letter-spacing: .2px;
 }
 
-/* Inputs look modern */
 .field input,
 .field select,
 .field textarea{
@@ -170,7 +233,6 @@
   transition: border .18s ease, box-shadow .18s ease, transform .18s ease;
 }
 
-/* Focus glow */
 .field input:focus,
 .field select:focus,
 .field textarea:focus{
@@ -178,23 +240,18 @@
   box-shadow: 0 0 0 4px rgba(122,92,255,.12);
 }
 
-/* Textarea nicer */
 .field textarea{
   min-height: 140px;
   resize: vertical;
   line-height: 1.6;
 }
 
-/* ✅ Jarak antara message & Send button */
 #contactForm .field:last-of-type{
   margin-bottom: 14px;
 }
 
-/* =========================
-   SEND BUTTON – nicer + spacing
-========================= */
 #sendBtn{
-  margin-top: 10px;          /* ✅ jarak dari textarea */
+  margin-top: 10px;
   border: 0;
   border-radius: 18px;
   padding: 14px 16px;
@@ -223,11 +280,8 @@
   box-shadow: none;
 }
 
-/* =========================
-   SAVE PDF BUTTON – consistent style
-========================= */
 .pdf-row{
-  margin-top: 12px;        /* ✅ jarak dari Send */
+  margin-top: 12px;
   display:flex;
   gap: 10px;
 }
@@ -255,12 +309,21 @@
   box-shadow: 0 8px 18px rgba(0,0,0,.06);
 }
 
-/* dark mode friendly */
 [data-theme="dark"] .field input,
 [data-theme="dark"] .field select,
 [data-theme="dark"] .field textarea{
   background: rgba(20,18,32,.45);
   border-color: rgba(255,255,255,.10);
+}
+
+[data-theme="dark"] .support-card{
+  background: rgba(255,255,255,.04);
+  border-color: rgba(255,255,255,.08);
+}
+
+[data-theme="dark"] .support-icon{
+  background: rgba(122,92,255,.18);
+  border-color: rgba(122,92,255,.28);
 }
 
 [data-theme="dark"] #savePdfBtn{
@@ -269,7 +332,6 @@
   box-shadow: 0 8px 18px rgba(0,0,0,.25);
 }
 
-/* Small helper note spacing */
 #formNote{
   margin-top: 10px !important;
 }
@@ -325,7 +387,6 @@
   opacity: .75;
 }
 
-/* ✅ Print rules */
 @media print{
   body *{ visibility:hidden !important; }
   #pdfArea, #pdfArea *{ visibility:visible !important; }

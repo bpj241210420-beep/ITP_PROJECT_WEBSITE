@@ -5,21 +5,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>ServiceHub — What we provide</title>
 
-  <link rel="stylesheet" href="/common.css"/>
-  <link rel="stylesheet" href="/whatWeProvidestyle.css"/>
-  <link rel="stylesheet" href="/chatWidget.css"/>
+  <link rel="stylesheet" href="./common.css"/>
+  <link rel="stylesheet" href="./whatWeProvidestyle.css"/>
+  <link rel="stylesheet" href="./chatWidget.css"/>
 
-  <script defer src="/servicesData.js"></script>
-  <script defer src="/common.js"></script>
-  <script defer src="/chatWidget.js"></script>
-  <script defer src="/whatWeProvideMain.js"></script>
+  <script defer src="./servicesData.js"></script>
+  <script defer src="./common.js"></script>
+  <script defer src="./chatWidget.js"></script>
+  <script defer src="./whatWeProvideMain.js"></script>
 </head>
 <body>
 
   <header class="topbar">
     <div class="container">
       <div class="topbar-inner">
-        <a class="brand" href="/homePage.html">
+        <a class="brand" href="./homePage.html">
           <div class="brand-badge">S</div>
           <div class="brand-name">
             <strong>ServiceHub</strong>
@@ -53,10 +53,10 @@
 
       <div class="navrow">
         <nav class="navrow-inner">
-          <a href="/homePage.html" data-nav data-i18n data-en="Home" data-bm="Utama">Home</a>
-          <a href="/servicesPage.html" data-nav data-i18n data-en="Services" data-bm="Servis">Services</a>
-          <a href="/whatWeProvidePage.html" data-nav data-i18n data-en="What we provide" data-bm="Apa kami sediakan">What we provide</a>
-          <a href="/contactPage.html" data-nav data-i18n data-en="Contact" data-bm="Hubungi">Contact</a>
+          <a href="./homePage.html" data-nav data-i18n data-en="Home" data-bm="Utama">Home</a>
+          <a href="./servicesPage.html" data-nav data-i18n data-en="Services" data-bm="Servis">Services</a>
+          <a href="./whatWeProvidePage.html" data-nav data-i18n data-en="What we provide" data-bm="Apa kami sediakan">What we provide</a>
+          <a href="./contactPage.html" data-nav data-i18n data-en="Contact" data-bm="Hubungi">Contact</a>
         </nav>
       </div>
     </div>
@@ -101,11 +101,11 @@
             </div>
 
             <div class="p-hero-cta reveal" data-delay="2">
-              <a class="p-btn primary" href="/servicesPage.html"
+              <a class="p-btn primary" href="./servicesPage.html"
                  data-i18n data-en="Browse Services" data-bm="Lihat Servis">
                 Browse Services
               </a>
-              <a class="p-btn ghost" href="/contactPage.html"
+              <a class="p-btn ghost" href="./contactPage.html"
                  data-i18n data-en="Contact / Report" data-bm="Hubungi / Lapor">
                 Contact / Report
               </a>
@@ -197,21 +197,89 @@
           </div>
 
           <div class="p-about-foot">
-            <a class="p-btn primary" href="/servicesPage.html" data-i18n data-en="Explore services" data-bm="Teroka servis">Explore services</a>
-            <a class="p-btn ghost" href="/contactPage.html" data-i18n data-en="Suggest or report" data-bm="Cadang atau lapor">Suggest or report</a>
+            <a class="p-btn primary" href="./servicesPage.html" data-i18n data-en="Explore services" data-bm="Teroka servis">Explore services</a>
+            <a class="p-btn ghost" href="./contactPage.html" data-i18n data-en="Suggest or report" data-bm="Cadang atau lapor">Suggest or report</a>
           </div>
         </div>
       </div>
     </section>
 
+    <!-- STATISTICS SECTION ADDED ONLY -->
     <section class="p-section">
       <div class="container">
-        <div class="p-split">
-          <div class="p-split-media reveal">
-            <img class="p-img" data-asset="directory.jpeg" alt="Directory">
+        <div class="p-stats reveal">
+          <div class="p-stats-head">
+            <span class="p-kicker" data-i18n data-en="Quick Statistics" data-bm="Statistik Ringkas">Quick Statistics</span>
+            <h2 class="p-stats-title" data-i18n data-en="ServiceHub at a Glance" data-bm="ServiceHub Secara Ringkas">ServiceHub at a Glance</h2>
+            <p class="p-stats-sub" data-i18n
+              data-en="These quick figures summarize the type of experience and coverage that ServiceHub offers to students and local communities."
+              data-bm="Angka ringkas ini merumuskan pengalaman dan liputan yang ditawarkan oleh ServiceHub kepada pelajar dan komuniti tempatan.">
+              These quick figures summarize the type of experience and coverage that ServiceHub offers to students and local communities.
+            </p>
           </div>
 
-          <div class="p-split-text reveal" data-delay="1">
+          <div class="p-stats-grid">
+            <div class="p-stat-card reveal">
+              <div class="p-stat-num">9+</div>
+              <div class="p-stat-label" data-i18n data-en="Service Categories" data-bm="Kategori Servis">Service Categories</div>
+              <p data-i18n
+                data-en="Covers multiple local service categories for different user needs."
+                data-bm="Meliputi pelbagai kategori servis tempatan untuk keperluan pengguna yang berbeza.">
+                Covers multiple local service categories for different user needs.
+              </p>
+            </div>
+
+            <div class="p-stat-card reveal">
+              <div class="p-stat-num">30+</div>
+              <div class="p-stat-label" data-i18n data-en="Listed Services" data-bm="Servis Tersenarai">Listed Services</div>
+              <p data-i18n
+                data-en="Provides a growing directory of service listings around Batu Pahat and nearby areas."
+                data-bm="Menyediakan direktori servis yang semakin berkembang sekitar Batu Pahat dan kawasan berdekatan.">
+                Provides a growing directory of service listings around Batu Pahat and nearby areas.
+              </p>
+            </div>
+
+            <div class="p-stat-card reveal">
+              <div class="p-stat-num">3</div>
+              <div class="p-stat-label" data-i18n data-en="Direct Contact Options" data-bm="Pilihan Hubungan Terus">Direct Contact Options</div>
+              <p data-i18n
+                data-en="Users can reach providers through call, WhatsApp, and map directions."
+                data-bm="Pengguna boleh menghubungi penyedia melalui telefon, WhatsApp, dan arah peta.">
+                Users can reach providers through call, WhatsApp, and map directions.
+              </p>
+            </div>
+
+            <div class="p-stat-card reveal">
+              <div class="p-stat-num">24/7</div>
+              <div class="p-stat-label" data-i18n data-en="Website Access" data-bm="Akses Laman Web">Website Access</div>
+              <p data-i18n
+                data-en="The platform can be accessed anytime for browsing, reviewing, and reporting."
+                data-bm="Platform ini boleh diakses pada bila-bila masa untuk melayari, memberi ulasan, dan membuat laporan.">
+                The platform can be accessed anytime for browsing, reviewing, and reporting.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="p-section p-directory-section">
+      <div class="container">
+        <div class="p-split p-directory-split">
+          <div class="p-split-media reveal">
+            <div class="p-directory-media-card">
+              <img class="p-img" data-asset="directory.jpeg" alt="Directory">
+            </div>
+          </div>
+
+          <div class="p-split-text p-directory-text reveal" data-delay="1">
+            <span class="p-kicker p-directory-kicker"
+              data-i18n
+              data-en="Feature Overview"
+              data-bm="Gambaran Ciri">
+              Feature Overview
+            </span>
+
             <h2 data-i18n data-en="Directory listings" data-bm="Senarai direktori">Directory listings</h2>
             <p data-i18n
               data-en="Each listing shows area, address, category, tags, and quick actions (call / WhatsApp / map)."
@@ -219,11 +287,74 @@
               Each listing shows area, address, category, tags, and quick actions (call / WhatsApp / map).
             </p>
 
-            <ul class="p-list">
+            <ul class="p-list p-directory-list">
               <li data-i18n data-en="Search by keyword" data-bm="Cari guna kata kunci">Search by keyword</li>
               <li data-i18n data-en="Filter by category & area" data-bm="Tapis ikut kategori & kawasan">Filter by category & area</li>
               <li data-i18n data-en="Sort by rating" data-bm="Susun ikut rating">Sort by rating</li>
             </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ SECTION ADDED ONLY -->
+    <section class="p-section">
+      <div class="container">
+        <div class="p-faq reveal">
+          <div class="p-faq-head">
+            <span class="p-kicker" data-i18n data-en="FAQ" data-bm="Soalan Lazim">FAQ</span>
+            <h2 class="p-faq-title" data-i18n data-en="Frequently Asked Questions" data-bm="Soalan Lazim">Frequently Asked Questions</h2>
+            <p class="p-faq-sub" data-i18n
+              data-en="Here are some common questions about how ServiceHub works and how users can use the website effectively."
+              data-bm="Berikut ialah beberapa soalan biasa tentang cara ServiceHub berfungsi dan bagaimana pengguna boleh menggunakan laman web ini dengan lebih berkesan.">
+              Here are some common questions about how ServiceHub works and how users can use the website effectively.
+            </p>
+          </div>
+
+          <div class="p-faq-list">
+            <details class="p-faq-item reveal">
+              <summary data-i18n data-en="How do I use ServiceHub to find a service?" data-bm="Bagaimana saya menggunakan ServiceHub untuk mencari servis?">
+                How do I use ServiceHub to find a service?
+              </summary>
+              <p data-i18n
+                data-en="You can browse the services page, search by keyword, and use category or area filters to quickly find the service you need."
+                data-bm="Anda boleh melayari halaman servis, membuat carian menggunakan kata kunci, dan menggunakan tapisan kategori atau kawasan untuk mencari servis yang diperlukan dengan cepat.">
+                You can browse the services page, search by keyword, and use category or area filters to quickly find the service you need.
+              </p>
+            </details>
+
+            <details class="p-faq-item reveal">
+              <summary data-i18n data-en="Can I contact the service provider directly?" data-bm="Bolehkah saya menghubungi penyedia servis secara terus?">
+                Can I contact the service provider directly?
+              </summary>
+              <p data-i18n
+                data-en="Yes. Most listings provide direct contact options such as phone call, WhatsApp, and map directions so users can connect with providers easily."
+                data-bm="Ya. Kebanyakan listing menyediakan pilihan hubungan terus seperti panggilan telefon, WhatsApp, dan arah peta supaya pengguna boleh berhubung dengan penyedia dengan mudah.">
+                Yes. Most listings provide direct contact options such as phone call, WhatsApp, and map directions so users can connect with providers easily.
+              </p>
+            </details>
+
+            <details class="p-faq-item reveal">
+              <summary data-i18n data-en="Is ServiceHub free to use?" data-bm="Adakah ServiceHub percuma untuk digunakan?">
+                Is ServiceHub free to use?
+              </summary>
+              <p data-i18n
+                data-en="Yes. ServiceHub is designed as a simple directory website for users to explore local services without any usage fee."
+                data-bm="Ya. ServiceHub direka sebagai laman web direktori yang mudah untuk pengguna meneroka servis tempatan tanpa sebarang bayaran penggunaan.">
+                Yes. ServiceHub is designed as a simple directory website for users to explore local services without any usage fee.
+              </p>
+            </details>
+
+            <details class="p-faq-item reveal">
+              <summary data-i18n data-en="Can I submit feedback or report a listing?" data-bm="Bolehkah saya menghantar maklum balas atau melaporkan sesuatu listing?">
+                Can I submit feedback or report a listing?
+              </summary>
+              <p data-i18n
+                data-en="Yes. Users can give reviews on service details pages and use the Contact / Report page to submit feedback, suggestions, or report listing issues."
+                data-bm="Ya. Pengguna boleh memberi ulasan pada halaman butiran servis dan menggunakan halaman Contact / Report untuk menghantar maklum balas, cadangan, atau melaporkan isu pada listing.">
+                Yes. Users can give reviews on service details pages and use the Contact / Report page to submit feedback, suggestions, or report listing issues.
+              </p>
+            </details>
           </div>
         </div>
       </div>
@@ -240,14 +371,13 @@
     </div>
   </footer>
 
-  <!-- ✅ make all data-asset images use /assets/... -->
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
     (function () {
       document.querySelectorAll("img[data-asset]").forEach((img) => {
         const file = img.getAttribute("data-asset") || "";
         if (!file) return;
-        img.src = encodeURI("/assets/" + file);
+        img.src = encodeURI("./assets/" + file);
       });
     })();
   </script>
