@@ -15,6 +15,7 @@
   background: rgba(255,255,255,.72);
   box-shadow: 0 12px 28px rgba(17, 10, 40, .06);
   transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease, background .18s ease;
+  min-width: 0;
 }
 .support-card:hover{
   transform: translateY(-3px);
@@ -38,6 +39,7 @@
   background: rgba(122,92,255,.10);
   border: 1px solid rgba(122,92,255,.16);
   transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+  flex-shrink: 0;
 }
 
 .support-card h3{
@@ -52,6 +54,7 @@
   color: rgba(91,87,114,.95);
   line-height: 1.7;
   font-size: 14px;
+  word-break: break-word;
 }
 
 .contact-grid{
@@ -60,8 +63,17 @@
   gap: 18px;
   margin-top: 22px;
 }
-.contact-card, .form-card{ padding: 22px; }
-.muted{ color: rgba(91,87,114,.95); line-height: 1.7; }
+
+.contact-card,
+.form-card{
+  padding: 22px;
+  min-width: 0;
+}
+
+.muted{
+  color: rgba(91,87,114,.95);
+  line-height: 1.7;
+}
 
 .contact-row{
   display:flex;
@@ -69,11 +81,30 @@
   gap: 10px;
   padding: 10px 0;
   border-bottom: 1px solid rgba(17, 15, 28, .08);
+  align-items:flex-start;
 }
-.contact-row .label{ color: rgba(91,87,114,.95); font-weight: 900; }
-.contact-row .value{ font-weight: 1000; color: #242038; }
 
-.cta-row{ display:flex; gap: 10px; margin-top: 14px; }
+.contact-row .label{
+  color: rgba(91,87,114,.95);
+  font-weight: 900;
+  flex-shrink: 0;
+}
+
+.contact-row .value{
+  font-weight: 1000;
+  color: #242038;
+  text-align: right;
+  word-break: break-word;
+  overflow-wrap: anywhere;
+}
+
+.cta-row{
+  display:flex;
+  gap: 10px;
+  margin-top: 14px;
+  flex-wrap: wrap;
+}
+
 .wa-btn{
   flex:1;
   border-radius: 14px;
@@ -83,6 +114,7 @@
   color: white;
   text-align:center;
   transition: transform .15s ease, filter .15s ease, box-shadow .15s ease;
+  min-width: 0;
 }
 .wa-btn:hover{
   transform: translateY(-1px);
@@ -121,8 +153,11 @@
   background: rgba(255,255,255,.60);
   padding: 12px 12px;
   outline:none;
+  width: 100%;
+  min-width: 0;
 }
 
+/* Existing responsive */
 @media (max-width: 920px){
   .support-highlights{ grid-template-columns: 1fr; }
   .contact-grid{ grid-template-columns: 1fr; }
@@ -180,6 +215,7 @@
   display:flex; align-items:center; justify-content:center;
   font-weight:1000;
   border:1px solid #ddd;
+  flex-shrink: 0;
 }
 .pdf-title{ font-weight:1000; font-size:18px; }
 .pdf-sub{ color:#555; font-size:12px; margin-top:2px; }
@@ -396,5 +432,204 @@
     inset: 0;
     padding: 16px;
     background:#fff;
+  }
+}
+
+/* =========================
+   RESPONSIVE IMPROVEMENTS ONLY
+========================= */
+
+@media (max-width: 1100px){
+  .support-highlights{
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .contact-grid{
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 920px){
+  .contact-card,
+  .form-card{
+    padding: 20px 18px;
+  }
+
+  .contact-row{
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .contact-row .value{
+    text-align: left;
+  }
+
+  .cta-row{
+    flex-direction: column;
+  }
+
+  .cta-row .wa-btn,
+  .cta-row .copy-btn{
+    width: 100%;
+  }
+
+  .pdf-head{
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .pdf-meta{
+    text-align: left;
+  }
+}
+
+@media (max-width: 640px){
+  .support-highlights{
+    grid-template-columns: 1fr;
+    gap: 12px;
+    margin-top: 18px;
+  }
+
+  .support-card{
+    padding: 16px 14px;
+    border-radius: 16px;
+  }
+
+  .support-icon{
+    width: 44px;
+    height: 44px;
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+
+  .support-card h3{
+    font-size: 16px;
+    line-height: 1.35;
+  }
+
+  .support-card p{
+    font-size: 13.5px;
+    line-height: 1.7;
+  }
+
+  .contact-grid{
+    gap: 14px;
+    margin-top: 18px;
+  }
+
+  .contact-card,
+  .form-card{
+    padding: 16px 14px;
+  }
+
+  .muted{
+    font-size: 14px;
+    line-height: 1.75;
+  }
+
+  .contact-row{
+    padding: 10px 0;
+  }
+
+  .contact-row .label,
+  .contact-row .value{
+    font-size: 14px;
+  }
+
+  .disclaimer{
+    padding: 12px;
+    border-radius: 12px;
+  }
+
+  .field{
+    margin-top: 12px;
+    gap: 7px;
+  }
+
+  .field label{
+    font-size: 12.5px;
+  }
+
+  .field input,
+  .field select,
+  .field textarea{
+    padding: 11px 12px;
+    border-radius: 14px;
+    font-size: 14px;
+  }
+
+  .field textarea{
+    min-height: 120px;
+  }
+
+  #sendBtn,
+  #savePdfBtn{
+    padding: 13px 14px;
+    border-radius: 16px;
+    font-size: 14px;
+  }
+
+  .pdf-row{
+    margin-top: 10px;
+  }
+
+  .pdf-sheet{
+    padding: 14px;
+  }
+
+  .pdf-brand{
+    gap: 10px;
+  }
+
+  .pdf-badge{
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+  }
+
+  .pdf-title{
+    font-size: 16px;
+  }
+
+  .pdf-sub,
+  .pdf-meta,
+  .pdf-label,
+  .pdf-foot{
+    font-size: 11px;
+  }
+
+  .pdf-value{
+    font-size: 12.5px;
+  }
+}
+
+@media (max-width: 420px){
+  .support-card{
+    padding: 14px 12px;
+  }
+
+  .contact-card,
+  .form-card{
+    padding: 14px 12px;
+  }
+
+  .support-card h3{
+    font-size: 15px;
+  }
+
+  .contact-row .label,
+  .contact-row .value{
+    font-size: 13.5px;
+  }
+
+  .field input,
+  .field select,
+  .field textarea{
+    font-size: 13.5px;
+  }
+
+  #sendBtn,
+  #savePdfBtn{
+    font-size: 13.5px;
   }
 }

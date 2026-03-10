@@ -28,6 +28,7 @@
   margin: 0 0 6px;
   font-size: 22px;
   font-weight: 1000;
+  line-height: 1.3;
 }
 
 .dmeta{
@@ -115,7 +116,10 @@
   gap: 14px;
 }
 
-.box{ padding: 16px; }
+.box{
+  padding: 16px;
+  min-width: 0;
+}
 
 .muted{
   color: var(--muted);
@@ -200,12 +204,14 @@
   font-weight: 1000;
   letter-spacing: 1px;
   font-size: 14px;
+  line-height: 1.4;
 }
 
 .review-date{
   font-size: 12px;
   color: var(--muted);
   white-space: nowrap;
+  text-align: right;
 }
 
 .review-author{
@@ -301,6 +307,7 @@
   box-shadow: 0 12px 28px rgba(20,16,45,.06);
   cursor: pointer;
   transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+  min-width: 0;
 }
 
 [data-theme="dark"] .nearby-card{
@@ -385,8 +392,217 @@
 .reveal[data-delay="2"]{ transition-delay: 180ms; }
 .reveal[data-delay="3"]{ transition-delay: 270ms; }
 
+@media (max-width: 1100px){
+  .details{
+    grid-template-columns: 1fr;
+  }
+
+  .grid2{
+    grid-template-columns: 1fr;
+  }
+
+  .nearby-grid{
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
 @media (max-width: 920px){
-  .details{ grid-template-columns: 1fr; }
-  .grid2{ grid-template-columns: 1fr; }
-  .nearby-grid{ grid-template-columns: 1fr; }
+  .details{
+    grid-template-columns: 1fr;
+    padding: 16px;
+  }
+
+  .grid2{
+    grid-template-columns: 1fr;
+  }
+
+  .actions{
+    gap: 8px;
+  }
+
+  .actions .btn{
+    flex: 1 1 calc(50% - 8px);
+    min-width: 140px;
+  }
+
+  .nearby-grid{
+    grid-template-columns: 1fr;
+  }
+
+  .nearby-section{
+    padding: 18px 16px;
+  }
+}
+
+@media (max-width: 640px){
+  .back{
+    margin-bottom: 10px;
+    font-size: 14px;
+  }
+
+  .details{
+    padding: 14px;
+    gap: 14px;
+  }
+
+  .dimg{
+    height: 220px;
+  }
+
+  .dtitle{
+    font-size: 20px;
+  }
+
+  .dmeta{
+    font-size: 14px;
+    line-height: 1.7;
+  }
+
+  .tags{
+    gap: 7px;
+    margin: 10px 0 12px;
+  }
+
+  .tag{
+    font-size: 10.5px;
+    padding: 6px 9px;
+  }
+
+  .box{
+    padding: 14px;
+  }
+
+  .map iframe{
+    height: 220px;
+  }
+
+  .row{
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .row .btn{
+    width: 100%;
+  }
+
+  .actions{
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .actions .btn{
+    width: 100%;
+    min-width: 0;
+  }
+
+  .featured-review-summary{
+    gap: 8px;
+  }
+
+  .featured-rating-pill,
+  .featured-count-pill{
+    font-size: 11px;
+    padding: 7px 10px;
+  }
+
+  .review{
+    padding: 12px;
+  }
+
+  .review-top{
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+
+  .review-date{
+    white-space: normal;
+    text-align: left;
+  }
+
+  .review-stars{
+    font-size: 13px;
+  }
+
+  .review-author{
+    font-size: 11.5px;
+  }
+
+  .review p{
+    font-size: 14px;
+    line-height: 1.75;
+  }
+
+  .nearby-section{
+    padding: 16px 14px;
+    margin-top: 18px;
+  }
+
+  .nearby-head h2{
+    font-size: 24px;
+  }
+
+  .nearby-head p{
+    font-size: 14px;
+  }
+
+  .nearby-card{
+    padding: 12px;
+  }
+
+  .nearby-img{
+    height: 180px;
+  }
+
+  .nearby-title{
+    font-size: 15px;
+  }
+
+  .nearby-meta{
+    font-size: 12.5px;
+  }
+
+  .nearby-chip{
+    font-size: 10.5px;
+    padding: 6px 9px;
+  }
+
+  .nearby-empty{
+    padding: 16px 14px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 420px){
+  .details{
+    padding: 12px;
+  }
+
+  .dimg{
+    height: 200px;
+    border-radius: 16px;
+  }
+
+  .dtitle{
+    font-size: 18px;
+  }
+
+  .box{
+    padding: 12px;
+  }
+
+  .map iframe{
+    height: 200px;
+  }
+
+  .nearby-img{
+    height: 160px;
+  }
+
+  .featured-rating-pill,
+  .featured-count-pill,
+  .tag,
+  .nearby-chip{
+    font-size: 10px;
+  }
 }
